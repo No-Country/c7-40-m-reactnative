@@ -8,7 +8,7 @@ export default function HomeScreen (props) {
   const {navigation} = props;
 
   const goToSettings= () => {
-    navigation.navigate("Settings")
+    navigation.navigate("Login")
   }
     return (
       <View>
@@ -19,8 +19,7 @@ export default function HomeScreen (props) {
         <Text>HomeScreen</Text>
         <Text>HomeScreen</Text>
         <Text>HomeScreen</Text>
-        
-        <Button onPress={goToSettings} title='Ir Ajustes' />
+        <Button onPress={goToSettings} title='Ir a Login' />
       </View>
     )
   
