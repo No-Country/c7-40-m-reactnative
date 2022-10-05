@@ -7,7 +7,7 @@ export default function Landing(props) {
     const{navigation}= props;
     // console.log(props);
     const goToHome = () => {
-        navigation.navigate('Home');
+        navigation.navigate('Login');
       };
     const goToSettings = () => {
         navigation.navigate('Settings');
