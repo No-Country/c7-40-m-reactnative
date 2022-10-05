@@ -5,9 +5,9 @@ import ButtonGreen from './Buttons/ButtonGreen';
 export default function Login(props) {
     const {navigation} = props;
 //   console.log(navigation)
-    const goToSettings= () => {
-        // navigation.navigate("Settings")
-        alert("Vamos a inicio")
+    const goToInicio= () => {
+        navigation.navigate("Inicio")
+        //alert("Vamos a inicio")
       }
     const goBack = () => {
         navigation.goBack("Home")
@@ -25,7 +25,7 @@ export default function Login(props) {
             <Text>Contraseña</Text>
             <TextInput style={styles.input} placeholder='Ingresa tu contraseña' keyboardType="visible-password" value={password} />
             <View style={styles.button}>
-                <ButtonGreen  onPress={goToSettings} text="Iniciar Sesión" />
+                <ButtonGreen  onPress={goToInicio} text="Iniciar Sesión" />
             </View>
             <View style={styles.text}>
             <Text>Me olvide la Contraseña.</Text>

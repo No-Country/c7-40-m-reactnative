@@ -4,6 +4,7 @@ import HomeScreen from "../screens/HomeScreen.js";
 import SettingsScreen from "../screens/SettingsScreen.js";
 import Landing from "../screens/Landing.js";
 import Login from '../screens/Login';
+import Inicio from "../screens/Inicio.js";
 
 const Stack = createStackNavigator();
 
@@ -15,6 +16,7 @@ export default function NavigationStack() {
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="Login" component={Login}/>
       <Stack.Screen name="Settings" component={SettingsScreen} />
+      <Stack.Screen name="Inicio" component={Inicio}/>
     </Stack.Navigator>
   );
 }
