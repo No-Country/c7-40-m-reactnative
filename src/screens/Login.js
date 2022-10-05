@@ -21,7 +21,7 @@ export default function Login(props) {
     <View style={styles.container}>
         <View style={styles.containerForm}>
             <Text>Email</Text>
-            <TextInput style={styles.input} onChangeText={()=>{}} placeholder='email@gmail.com' keyboardType="email-address" value={email} autoCapitalize="none" />
+            <TextInput style={styles.input} onChangeText={()=>{}} placeholder='Ingresa tu email' keyboardType="email-address" value={email} autoCapitalize="none" />
             <Text>Contraseña</Text>
             <TextInput style={styles.input} placeholder='Ingresa tu contraseña' keyboardType="visible-password" value={password} />
             <View style={styles.button}>
