@@ -25,7 +25,7 @@ export default function Login(props) {
             <Text>Contraseña</Text>
             <TextInput style={styles.input} placeholder='Ingresa tu contraseña' keyboardType="visible-password" value={password} />
             <View style={styles.button}>
-                <ButtonGreen  onPress={goToSettings} text="Iniciar Sesión" img={require('../assets/boton_verde.png')}/>
+                <ButtonGreen  onPress={goToSettings} text="Iniciar Sesión" />
             </View>
             <View style={styles.text}>
             <Text>Me olvide la Contraseña.</Text>

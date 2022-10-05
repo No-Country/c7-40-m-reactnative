@@ -7,6 +7,7 @@ import Login from '../screens/Login';
 const Stack = createStackNavigator();
 
 export default function NavigationStack() {
+
   return (
     <Stack.Navigator initialRouteName='Home'>
         <Stack.Screen name="Home" component={HomeScreen}/>

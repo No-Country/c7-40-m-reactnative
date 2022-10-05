@@ -1,14 +1,8 @@
 import { TouchableHighlight, View ,Text, StyleSheet,Image} from 'react-native'
 import React from 'react'
 
-export default function ButtonGreen({onPress, name, text,img}) {
+export default function ButtonGreen({onPress, text,img}) {
 
-  // console.log(nav.navigation.navigate)
-  // const {navigation} = nav;
-
-  // const goToSettings= () => {
-  //   navigation.navigate({name})
-  // }
   return (
       <TouchableHighlight
         style={styles.button}

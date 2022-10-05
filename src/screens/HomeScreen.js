@@ -4,7 +4,7 @@ import React from 'react'
 
 
 export default function HomeScreen (props) {
-
+  // console.log(props)
   const {navigation} = props;
 
   const goToLogin= () => {
