@@ -1,11 +1,11 @@
 import * as React from "react";
-import { Text, View, StyleSheet, ImageBackground, TouchableOpacity } from "react-native";
-import LogoLanding from "../components/Components/LogoLanding.js";
+import { Text, View, StyleSheet, ImageBackground, TouchableOpacity ,Image} from "react-native";
 import Back from "../../assets/background.png";
+
 
 export default function Landing(props) {
     const{navigation}= props;
-    console.log(props);
+    // console.log(props);
     const goToHome = () => {
         navigation.navigate('Home');
       };
@@ -15,7 +15,9 @@ export default function Landing(props) {
   return (
     <View style={styles.container}>
       <ImageBackground source={Back} resizeMode="cover" style={styles.image}>
-        <LogoLanding />     
+        <View style={styles.containerLogo}>
+          <Image source={require("../../assets/SaveFood.png")} />
+        </View>   
         <Text style={styles.paragraph}>
           Nuestro propósito es reducir el desperdicio de productos gastronomicos
           y organicos.
@@ -34,6 +36,11 @@ export default function Landing(props) {
 }
 
 const styles = StyleSheet.create({
+  containerLogo: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 24,
+  },
   container: {
     flex: 1,
   },
