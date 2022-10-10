@@ -1,6 +1,6 @@
 import { View, Text, Image, StyleSheet} from 'react-native'
 import React from 'react'
-import {Card, Paragraph, Title} from 'react-native-paper';
+import {Card, Paragraph} from 'react-native-paper';
 
 
 export default function CardComercio(){
@@ -9,11 +9,10 @@ export default function CardComercio(){
 
   return (
     <View style={styles.container}>
-      <Image source={require('../assets/food.png')} />
+      <Image source={require('../assets/food.png')} style={styles.imageFood}/>
       <Card style={styles.card}>
         <View style={styles.containerTitle}>
           <Text style={styles.title}>La cocina de Toto</Text>
-          {/* <Card.Title title="La cocina de Toto"/> */}
           <Image source={require('../assets/star.png')} />
         </View>
         <Paragraph style={styles.paragraph}>“ La gente súper servicial y atenta pero hay muy poco surtido en bebidas y otros. “</Paragraph>
@@ -31,16 +30,14 @@ const styles = StyleSheet.create({
     width: '70%', 
     marginBottom: 20
   },
+  imageFood:{
+    marginLeft:3
+  },
   card:{
     borderRadius: 20, 
-    marginLeft: 10,
+    marginLeft: 5,
     backgroundColor: '#DAF4F0',
     elevation:8,
-  
-  },
-  paragraph:{
-    textAlign:'center',
-    marginTop:15
   },
   containerTitle:{
     flexDirection:'row',
@@ -52,10 +49,13 @@ const styles = StyleSheet.create({
     marginLeft:10,
     fontWeight:'bold'
   },
+  paragraph:{
+    textAlign:'center',
+    marginTop:15
+  },
   corazones:{
     marginLeft:210,
     marginTop:25
   }
-  
 
 })

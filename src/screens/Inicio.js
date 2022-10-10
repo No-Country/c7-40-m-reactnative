@@ -1,6 +1,7 @@
 import { Text, View, StyleSheet, Image, TouchableOpacity, TextInput, ScrollView} from 'react-native'
 import React from 'react'
 import CardComercio from '../Components/CarComercio';
+import Serch from '../Components/Search';
 
 
 
@@ -15,9 +16,9 @@ export default function Inicio (props) {
     return (
       <ScrollView style={styles.bg}>
         <View style={styles.containerMenu}>
-          <Image source={require('../../assets/SaveFood.png')}/>
-          <TextInput style={styles.input} placeholder="Busqueda"/>
-          <Image source={require('../../assets/busqueda.png')} />
+          <Image source={require('../assets/logo-savefood.png')}/>
+          <Serch/>
+          <Image source={require('../../assets/busqueda.png')} style={styles.busqueda}/>
         </View>
         
         <View style={styles.container}>
@@ -89,13 +90,8 @@ const styles = StyleSheet.create({
     color:'#17443F',
     fontSize:18
   },
-  input:{
-    borderWidth: 1,
-    padding: 5,
-    borderRadius:15,
-    width:120,
-    height:40,
-    borderColor:'#184D47'
+  busqueda:{
+    marginTop:15
   }
 
 })
