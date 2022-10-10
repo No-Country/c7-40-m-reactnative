@@ -1,6 +1,9 @@
-import { Text, View, StyleSheet, Image, TouchableOpacity, TextInput} from 'react-native'
+import { Text, View, StyleSheet, Image, TouchableOpacity, TextInput, ScrollView} from 'react-native'
 import React from 'react'
 import CardComercio from '../Components/CarComercio';
+import Serch from '../Components/Search';
+
+
 
 export default function Inicio (props) {
   console.log(props)
@@ -11,12 +14,13 @@ export default function Inicio (props) {
     navigation.navigate("Settings")
   }
     return (
-      <View>
+      <ScrollView style={styles.bg}>
         <View style={styles.containerMenu}>
-          <Image source={require('../../assets/SaveFood.png')} />
-          <TextInput style={styles.input} placeholder="Busqueda"/>
-          <Image source={require("../../assets/busqueda.png")} />
+          <Image source={require('../assets/logo-savefood.png')}/>
+          <Serch/>
+          <Image source={require('../../assets/busqueda.png')} style={styles.busqueda}/>
         </View>
+        
         <View style={styles.container}>
           <TouchableOpacity
             style={styles.button}
@@ -28,19 +32,25 @@ export default function Inicio (props) {
         <Text style={styles.title}>Bienvenido!</Text>
 
         <View style={styles.containerTop}>
-          <Text>TOP 10</Text>
+          <Text style={styles.textTop}>TOP 10</Text>
           <Image source={require('../../assets/copa.png')} />
         </View>
 
         <CardComercio/>
         <CardComercio/>
+        <CardComercio/>
+        <CardComercio/>
 
         <Text style={styles}>Menu botones abajo</Text>
-      </View>
+      </ScrollView>
     )
 }
 
 const styles = StyleSheet.create({
+  bg:{
+    backgroundColor:'#F7FDFD',
+    height:'100%'
+  },
   containerMenu:{
     flexDirection:'row',
     justifyContent:'space-around'
@@ -52,6 +62,7 @@ const styles = StyleSheet.create({
     width:250,
     marginTop:20,
     borderRadius:15,
+    elevation:8
   },
   container:{
     marginLeft:'20%',
@@ -61,6 +72,7 @@ const styles = StyleSheet.create({
     textAlign:'center',
     fontSize:18,
     color:'#184D47',
+    fontWeight:'bold'
   },
   title:{
     textAlign:'center',
@@ -71,14 +83,15 @@ const styles = StyleSheet.create({
     flexDirection:'row',
     justifyContent:'center',
     marginTop:15,
-    marginBottom:15,
+    marginBottom:25,
   },
-  input:{
-    borderWidth: 1,
-    padding: 5,
-    borderRadius:15,
-    width:150,
-    borderColor:'#184D47'
+  textTop:{
+    fontWeight:'bold',
+    color:'#17443F',
+    fontSize:18
+  },
+  busqueda:{
+    marginTop:15
   }
 
 })
