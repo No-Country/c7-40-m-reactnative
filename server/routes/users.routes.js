@@ -3,8 +3,8 @@ const express = require("express");
 // Controllers
 const {
   createUser,
-  updateUser,
-  deleteUser,
+  updateDataUser,
+  updatePasswordUser,
   login,
   getDataUser,
 } = require("../controllers/users.controller");
@@ -32,8 +32,9 @@ usersRouter.use(protectSession);
 
 usersRouter.get("/" , getDataUser);
 
-usersRouter.patch("/:id", userExists, protectUsersAccount, updateUser);
+usersRouter.put("/:id", userExists, protectUsersAccount, updateDataUser);
 
-usersRouter.delete("/:id", userExists, protectUsersAccount, deleteUser);
+usersRouter.patch('/:id', userExists, protectUsersAccount, updatePasswordUser)
+
 
 module.exports = { usersRouter };

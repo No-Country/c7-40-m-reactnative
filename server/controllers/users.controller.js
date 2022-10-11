@@ -38,6 +38,7 @@ const getDataUser = catchAsync(async (req, res, next) => {
 });
 
 const createUser = catchAsync(async (req, res, next) => {
+
   const { firstName, lastName, address, mobile, email, password, role } =
     req.body;
 
@@ -83,13 +84,23 @@ const updateDataUser = catchAsync(async (req, res, next) => {
   });
 });
 
-const deleteUser = catchAsync(async (req, res, next) => {
-  const { user } = req;
 
-  await user.update({ status: "deleted" });
+const updatePasswordUser = catchAsync(async (req, res, next) => {
+  const {password, newPassword} = req.body
+  const { user } = req
 
-  res.status(204).json({ status: "success" });
-});
+  if(!(await bcrypt.compare(password, user.password))) {
+    return next(new AppError("Password invalid", 400))
+  }
+   
+  await user.update({ password: newPassword})
+
+  res.status(200).json({
+    status:'success'
+  })
+
+})
+
 
 const login = catchAsync(async (req, res, next) => {
   // Get email and password from req.body
@@ -103,7 +114,7 @@ const login = catchAsync(async (req, res, next) => {
   // Compare passwords (entered password vs db password)
   // If user doesn't exists or passwords doesn't match, send error
   if (!user || !(await bcrypt.compare(password, user.password))) {
-    return next(new AppError("Wrong credentials", 400));
+    return next(new AppError("Wrong  credentials", 400));
   }
 
   // Remove password from response
@@ -124,6 +135,6 @@ module.exports = {
   getDataUser,
   createUser,
   updateDataUser,
-  deleteUser,
+  updatePasswordUser,
   login,
 };
