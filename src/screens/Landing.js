@@ -31,8 +31,10 @@ export default function Landing(props) {
           y organicos.
         </Text>
         <View style={styles.button}>
-          <ButtonGreen onPress={goToHome} text="Iniciar Sesión" />
-          <ButtonGreenLight onPress={goToSettings} text='Registro'  />
+          <ButtonGreen style={styles.buttonGreen} onPress={goToHome} text="Iniciar Sesión" />
+          <View style={styles.buttonGreen}>
+          <ButtonGreenLight onPress={goToRegistro} text='Registrarse'  />
+          </View>
          </View>
       </ImageBackground>
     </View>
@@ -64,5 +66,9 @@ const styles = StyleSheet.create({
     marginTop: 20,
     paddingTop: 50,
     padding: 50
+},
+buttonGreen:{
+  margin: 15
 }
+
 });
