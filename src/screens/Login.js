@@ -9,20 +9,20 @@ import * as Yup from 'yup';
 export default function Login(props) {
     const formik = useFormik({
         initialValues: {
-            email,
-            password
+            email: "",
+            password: ""
         },
-        validationSchema: Yup.object(()=>{ 
-            return{
-            email: Yup.string().required('El usuario es obligatorio'),
-            password: Yup.number().required('La contraseña es obligatorio')
-        }}),
+        validationSchema: Yup.object({
+                email: Yup.string().email('Su email debe ser valido').required('El email es obligatorio'),
+                password: Yup.string().required('La contraseña es obligatorio')
+        }),
         onSubmit: () => {
-            if(email === userDetails.username && password === userDetails.password){
+            if(formik.values.email === userDetails.userEmail &&  formik.values.password === userDetails.password){
                 navigation.navigate("Inicio")
-            } else {
+            }
+             else {
                 alert('vuelva a ingresar email o contraseña')
-                return navigation.navigate("Login")
+                // return navigation.navigate("Login")
             }
         }
     })
@@ -30,29 +30,29 @@ export default function Login(props) {
     const {navigation} = props;
    
     //-------LOGIN
-    const [email , useEmail] = useState('')
-    const [password, usePassword] = useState('')
+    // const [email , useEmail] = useState('')
+    // const [password, usePassword] = useState('')
 
-    const getEmail = (event) => {
-        useEmail(event)
-        //console.log(email)
-    }
+    // const getEmail = (event) => {
+    //     useEmail(event)
+    //     //console.log(email)
+    // }
     
-    const getPassword = (event) => {
-        usePassword(event)
-        // console.log(password)
-    }
+    // const getPassword = (event) => {
+    //     usePassword(event)
+    //     // console.log(password)
+    // }
 
-    const goToInicio= () => {
+    // const goToInicio= () => {
     
-        if(email === userDetails.username && password === userDetails.password){
-            navigation.navigate("Inicio")
-        } else {
-            alert('vuelva a ingresar email o contraseña')
-            return navigation.navigate("Login")
-        }
+    //     if(email === userDetails.username && password === userDetails.password){
+    //         navigation.navigate("Inicio")
+    //     } else {
+    //         alert('vuelva a ingresar email o contraseña')
+    //         return navigation.navigate("Login")
+    //     }
     
-    }
+    // }
 
     const goBack = () => {
         navigation.goBack("Home")
@@ -62,20 +62,31 @@ export default function Login(props) {
     <View style={styles.container}>
         <View style={styles.containerForm}>
             <Text>Email</Text>
-            <TextInput style={styles.input} onChangeText={getEmail} placeholder='Ingresa tu email' keyboardType="email-address" autoCapitalize="none"  defaultValue={email} />
-            <Text>{formik.errors.email}</Text>
+            <TextInput 
+            style={ formik.errors.email ? styles.inputError : styles.input }
+            placeholder='Ingresa tu email' 
+            keyboardType="email-address" 
+            autoCapitalize="none"  
+            value={formik.values.email} 
+            onChangeText={(text) => formik.setFieldValue('email', text)} />
+            <Text style={styles.textError} >{formik.errors.email}</Text>
             <Text>Contraseña</Text>
-            <TextInput style={styles.input} onChangeText={getPassword} placeholder='Ingresa tu contraseña' keyboardType="" value={password} secureTextEntry={true} />
-            
+            <TextInput 
+            style={ formik.errors.password ? styles.inputError : styles.input }
+            placeholder='Ingresa tu contraseña' 
+            onChangeText={(text) => formik.setFieldValue("password", text)}
+            keyboardType="password"
+            value={formik.values.password} 
+            secureTextEntry={true} />   
+            <Text style={styles.textError} >{formik.errors.password}</Text>
             <View style={styles.button}>
-                <ButtonGreen  onPress={goToInicio} text="Iniciar Sesión" />
+                <ButtonGreen  onPress={formik.handleSubmit} text="Iniciar Sesión" />
             </View>
             <View style={styles.text}>
             <Text>Me olvide la Contraseña.</Text>
             </View>
-            <Text>{formik.errors.email}</Text>
         </View>
-        <TouchableHighlight onPress={formik.handleSubmit} style={styles.buttonVolver}>
+        <TouchableHighlight onPress={goBack} style={styles.buttonVolver}>
             <Image source={require("../assets/BotonVolver.png")}/>
         </TouchableHighlight>
     </View>
@@ -126,5 +137,21 @@ const styles = StyleSheet.create({
     },
     buttonVolver: {
     alignItems: "flex-end"
+    },
+    inputError: {
+        height: 44,
+        width: 286,
+        borderRadius: 3,
+        borderWidth: 0,
+        padding: 10,
+        backgroundColor: "#DAF4F0",
+        //paddingLeft: 10,
+        paddingRight: 10,
+        marginVertical: 10,
+        borderColor: '#CC5252',
+        borderWidth:1
+    },
+    textError: {
+        color: "#CC5252"
     }
 })

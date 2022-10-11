@@ -3,7 +3,7 @@ import React from 'react'
 import CardComercio from '../Components/CarComercio';
 
 export default function Inicio (props) {
-  console.log(props)
+  //console.log(props)
 
   const {navigation} = props;
 
