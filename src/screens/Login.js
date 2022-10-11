@@ -1,6 +1,7 @@
 import { View, TextInput, StyleSheet, Text, Button, Alert,TouchableHighlight ,Image} from 'react-native';
 import React ,{ useState }from 'react';
 import ButtonGreen from './Buttons/ButtonGreen';
+//import Thame from './Theme/Thame.js';
 
 export default function Login(props) {
     const {navigation} = props;
@@ -34,6 +35,7 @@ export default function Login(props) {
         <TouchableHighlight onPress={goBack} style={styles.buttonVolver}>
             <Image source={require("../assets/BotonVolver.png")}/>
         </TouchableHighlight>
+        {/* <Thame/> */}
     </View>
   )
 }
@@ -41,7 +43,7 @@ export default function Login(props) {
 const styles = StyleSheet.create({
     container:{
     // alignSelf: "center",
-    backgroundColor: "#F7FDFD",
+        backgroundColor: "#F7FDFD",
         width: "100%",
         flex: 1,
         //padding: 30,

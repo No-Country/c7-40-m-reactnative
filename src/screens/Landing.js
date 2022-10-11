@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Text, View, StyleSheet, ImageBackground, TouchableOpacity ,Image} from "react-native";
 import Back from "../../assets/background.png";
-
+import ButtonGreenLight from "./Buttons/ButtonGreenLight";
 
 export default function Landing(props) {
     const{navigation}= props;
@@ -26,9 +26,7 @@ export default function Landing(props) {
       <TouchableOpacity onPress={goToHome}>
         <Text> Inicio Sesion </Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={goToSettings}>
-        <Text> Registro </Text>
-      </TouchableOpacity>
+      <ButtonGreenLight onPress={goToSettings} text='Registro'  />
     </View>
      </ImageBackground>
     </View>
