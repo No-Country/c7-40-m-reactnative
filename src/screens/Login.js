@@ -1,44 +1,88 @@
 import { View, TextInput, StyleSheet, Text, Button, Alert,TouchableHighlight ,Image} from 'react-native';
 import React ,{ useState }from 'react';
 import ButtonGreen from './Buttons/ButtonGreen';
-//import Thame from './Theme/Thame.js';
+import { userDetails } from '../utils/userDB';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+
 
 export default function Login(props) {
+    const formik = useFormik({
+        initialValues: {
+            email,
+            password
+        },
+        validationSchema: Yup.object(()=>{ 
+            return{
+            email: Yup.string().required('El usuario es obligatorio'),
+            password: Yup.number().required('La contraseña es obligatorio')
+        }}),
+        onSubmit: () => {
+            if(email === userDetails.username && password === userDetails.password){
+                navigation.navigate("Inicio")
+            } else {
+                alert('vuelva a ingresar email o contraseña')
+                return navigation.navigate("Login")
+            }
+        }
+    })
+
     const {navigation} = props;
-//   console.log(navigation)
+   
+    //-------LOGIN
+    const [email , useEmail] = useState('')
+    const [password, usePassword] = useState('')
+
+    const getEmail = (event) => {
+        useEmail(event)
+        //console.log(email)
+    }
+    
+    const getPassword = (event) => {
+        usePassword(event)
+        // console.log(password)
+    }
+
     const goToInicio= () => {
-        navigation.navigate("Inicio")
-        //alert("Vamos a inicio")
-      }
+    
+        if(email === userDetails.username && password === userDetails.password){
+            navigation.navigate("Inicio")
+        } else {
+            alert('vuelva a ingresar email o contraseña')
+            return navigation.navigate("Login")
+        }
+    
+    }
+
     const goBack = () => {
         navigation.goBack("Home")
     }
-
-    const [email , useEmail] = useState('')
-    const [password, usePassword] = useState(null)
     
-
   return (
     <View style={styles.container}>
         <View style={styles.containerForm}>
             <Text>Email</Text>
-            <TextInput style={styles.input} onChangeText={()=>{}} placeholder='Ingresa tu email' keyboardType="email-address" value={email} autoCapitalize="none" />
+            <TextInput style={styles.input} onChangeText={getEmail} placeholder='Ingresa tu email' keyboardType="email-address" autoCapitalize="none"  defaultValue={email} />
+            <Text>{formik.errors.email}</Text>
             <Text>Contraseña</Text>
-            <TextInput style={styles.input} placeholder='Ingresa tu contraseña' keyboardType="visible-password" value={password} />
+            <TextInput style={styles.input} onChangeText={getPassword} placeholder='Ingresa tu contraseña' keyboardType="" value={password} secureTextEntry={true} />
+            
             <View style={styles.button}>
                 <ButtonGreen  onPress={goToInicio} text="Iniciar Sesión" />
             </View>
             <View style={styles.text}>
             <Text>Me olvide la Contraseña.</Text>
             </View>
+            <Text>{formik.errors.email}</Text>
         </View>
-        <TouchableHighlight onPress={goBack} style={styles.buttonVolver}>
+        <TouchableHighlight onPress={formik.handleSubmit} style={styles.buttonVolver}>
             <Image source={require("../assets/BotonVolver.png")}/>
         </TouchableHighlight>
-        {/* <Thame/> */}
     </View>
   )
 }
+
+
 
 const styles = StyleSheet.create({
     container:{
