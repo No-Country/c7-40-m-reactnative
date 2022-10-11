@@ -6,7 +6,7 @@ import Serch from '../Components/Search';
 
 
 export default function Inicio (props) {
-  console.log(props)
+  //console.log(props)
 
   const {navigation} = props;
 

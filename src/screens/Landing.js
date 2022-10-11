@@ -9,7 +9,7 @@ import {
 import Back from "../../assets/background.png";
 import ButtonGreen from "./Buttons/ButtonGreen";
 import Icon from "react-native-vector-icons/Ionicons";
-
+import ButtonGreenLight from "./Buttons/ButtonGreenLight";
 
 export default function Landing(props) {
   const { navigation } = props;
@@ -32,8 +32,8 @@ export default function Landing(props) {
         </Text>
         <View style={styles.button}>
           <ButtonGreen onPress={goToHome} text="Iniciar Sesión" />
-          <ButtonGreen onPress={goToRegistro} text="Registro" />   
-        </View>
+          <ButtonGreenLight onPress={goToSettings} text='Registro'  />
+         </View>
       </ImageBackground>
     </View>
   );

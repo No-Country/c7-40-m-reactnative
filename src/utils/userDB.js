@@ -8,5 +8,6 @@ export const userDetails = {
     userLastName: "mendez",
     userEmail: "natalia@savefood.com",
     userDirection: "Privet Drive 4",
-    userCel: "2515165151"
+    userCel: "2515165151",
+    password: "123456"
 }
