@@ -1,6 +1,6 @@
 import { Text, View, StyleSheet, Image, TouchableOpacity, TextInput, ScrollView} from 'react-native'
 import React from 'react'
-import CardComercio from '../Components/CarComercio';
+import CardComercio from '../Components/CardComercio';
 import Serch from '../Components/Search';
 
 
@@ -10,8 +10,8 @@ export default function Inicio (props) {
 
   const {navigation} = props;
 
-  const goToSettings= () => {
-    navigation.navigate("Settings")
+  const goToProductos= () => {
+    navigation.navigate("Productos")
   }
     return (
       <ScrollView style={styles.bg}>
@@ -24,7 +24,7 @@ export default function Inicio (props) {
         <View style={styles.container}>
           <TouchableOpacity
             style={styles.button}
-            onPress={goToSettings}>
+            onPress={goToProductos}>
             <Text style={styles.text}>Explorar</Text>
           </TouchableOpacity>
         </View>
