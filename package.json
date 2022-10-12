@@ -20,23 +20,23 @@
     "expo-font": "^10.2.1",
     "expo-splash-screen": "~0.16.2",
     "expo-status-bar": "~1.4.0",
+    "formik": "^2.2.9",
     "prop-types": "^15.8.1",
     "react": "18.0.0",
     "react-native": "0.69.6",
     "react-native-gesture-handler": "~2.5.0",
     "react-native-paper": "^4.12.5",
     "react-native-reanimated": "~2.9.1",
-<<<<<<< HEAD
     "react-native-safe-area-context": "4.3.1",
     "react-native-screens": "~3.15.0",
     "react-native-web": "~0.18.7",
     "react-dom": "18.0.0",
-    "@expo/webpack-config": "^0.17.0"
-=======
-    "react-native-safe-area-context": "^4.3.1",
-    "react-native-screens": "~3.15.0",
-    "react-native-vector-icons": "^9.2.0"
->>>>>>> f62e32c2f4f85e8cf039f91f03116467a654883e
+    "@expo/webpack-config": "^0.17.0",
+    "react-native-vector-icons": "^9.2.0",
+    "react-redux": "^8.0.4",
+    "redux": "^4.1.0",
+    "redux-thunk": "^2.3.0",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

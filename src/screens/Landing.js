@@ -9,7 +9,7 @@ import {
 import Back from "../../assets/background.png";
 import ButtonGreen from "./Buttons/ButtonGreen";
 import Icon from "react-native-vector-icons/Ionicons";
-
+import ButtonGreenLight from "./Buttons/ButtonGreenLight";
 
 export default function Landing(props) {
   const { navigation } = props;
@@ -31,9 +31,11 @@ export default function Landing(props) {
           y organicos.
         </Text>
         <View style={styles.button}>
-          <ButtonGreen onPress={goToHome} text="Iniciar Sesión" />
-          <ButtonGreen onPress={goToRegistro} text="Registro" />   
-        </View>
+          <ButtonGreen style={styles.buttonGreen} onPress={goToHome} text="Iniciar Sesión" />
+          <View style={styles.buttonGreen}>
+          <ButtonGreenLight onPress={goToRegistro} text='Registrarse'  />
+          </View>
+         </View>
       </ImageBackground>
     </View>
   );
@@ -64,5 +66,9 @@ const styles = StyleSheet.create({
     marginTop: 20,
     paddingTop: 50,
     padding: 50
+},
+buttonGreen:{
+  margin: 15
 }
+
 });
