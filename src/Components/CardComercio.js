@@ -1,7 +1,8 @@
-import { View, Text, Image, StyleSheet} from 'react-native'
+import { View, Text, Image, StyleSheet,Dimensions} from 'react-native'
 import React from 'react'
 import {Card, Paragraph} from 'react-native-paper';
 
+const {width} = Dimensions.get ('window');
 
 export default function CardComercio(){
 
@@ -27,7 +28,7 @@ export default function CardComercio(){
 const styles = StyleSheet.create({
   container:{
     flexDirection: 'row',
-    width: '70%', 
+    width: width/2, 
     marginBottom: 20
   },
   imageFood:{
