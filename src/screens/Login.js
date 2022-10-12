@@ -1,12 +1,14 @@
 import { View, TextInput, StyleSheet, Text, Button, Alert,TouchableHighlight ,Image} from 'react-native';
-import React ,{ useState }from 'react';
+import React ,{ useEffect, useState }from 'react';
 import ButtonGreen from './Buttons/ButtonGreen';
 import { userDetails } from '../utils/userDB';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+// import { useDispatch } from 'react-redux';
 
 
 export default function Login(props) {
+
     const formik = useFormik({
         initialValues: {
             email: "",
@@ -83,12 +85,9 @@ export default function Login(props) {
                 <ButtonGreen  onPress={formik.handleSubmit} text="Iniciar Sesión" />
             </View>
             <View style={styles.text}>
-            <Text>Me olvide la Contraseña.</Text>
+                <Text>Me olvide la Contraseña.</Text>
             </View>
         </View>
-        <TouchableHighlight onPress={goBack} style={styles.buttonVolver}>
-            <Image source={require("../assets/BotonVolver.png")}/>
-        </TouchableHighlight>
     </View>
   )
 }

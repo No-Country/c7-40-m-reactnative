@@ -1,5 +1,6 @@
 import { Text, View, Button } from "react-native";
 import React from "react";
+import { userDetails } from "../utils/userDB";
 // import Navbar from './Navbar';
 
 export default function MiPerfil(props) {
@@ -12,8 +13,7 @@ export default function MiPerfil(props) {
   return (
     <View>
       <Text>Este es mi perfil</Text>
-      <Text>Soy Lolo</Text>
-
+      <Text>{userDetails.username}</Text>
       <Button onPress={goToInicio} title="Ir a Inicio" />
     </View>
   );

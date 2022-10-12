@@ -1,6 +1,6 @@
 export const USER = 'USER';
 
-const API_URL = 'localhost'
+const API_URL = 'Endopoints de luis/'
 
 export function allCountries() {
     return async (dispatch) => {
