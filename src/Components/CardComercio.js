@@ -27,17 +27,18 @@ export default function CardComercio(){
 const styles = StyleSheet.create({
   container:{
     flexDirection: 'row',
-    width: '70%', 
-    marginBottom: 20
+    marginBottom: 20,
+    marginLeft:15
   },
   imageFood:{
     marginLeft:3
   },
   card:{
     borderRadius: 20, 
-    marginLeft: 5,
+    marginLeft: 10,
     backgroundColor: '#DAF4F0',
     elevation:8,
+    width:'60%'
   },
   containerTitle:{
     flexDirection:'row',
@@ -54,7 +55,7 @@ const styles = StyleSheet.create({
     marginTop:15
   },
   corazones:{
-    marginLeft:210,
+    marginLeft:175,
     marginTop:25
   }
 
