@@ -53,7 +53,7 @@ const protectUsersAccount = (req, res, next) => {
 	// const { id } = req.params;
 
 	// If the users (ids) don't match, send an error, otherwise continue
-	if (sessionUser.id !== user.id) {
+	if (sessionUser.id != user.id) {
 		return next(new AppError('You are not the owner of this account.', 403));
 	}
 

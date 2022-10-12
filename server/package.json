@@ -3,6 +3,9 @@
 	"version": "1.0.0",
 	"description": "A simple Express server",
 	"main": "index.js",
+	"engines": {
+		"node": "16.x"
+	},
 	"scripts": {
 		"start": "node server.js",
 		"start:dev": "nodemon server.js"

@@ -92,8 +92,12 @@ const updatePasswordUser = catchAsync(async (req, res, next) => {
   if(!(await bcrypt.compare(password, user.password))) {
     return next(new AppError("Password invalid", 400))
   }
+
+  // Encrypt the password
+  const salt = await bcrypt.genSalt(12);
+  const hashedPassword = await bcrypt.hash(newPassword, salt);
    
-  await user.update({ password: newPassword})
+  await user.update({ password: hashedPassword})
 
   res.status(200).json({
     status:'success'
