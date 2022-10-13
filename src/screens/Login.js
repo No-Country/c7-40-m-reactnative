@@ -4,14 +4,11 @@ import ButtonGreen from './Buttons/ButtonGreen';
 import { userDetails } from '../utils/userDB';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-// import { useDispatch } from 'react-redux';
-// import {SafeAreaView } from 'react-native'
+import { useDispatch, useSelector } from 'react-redux';
+import { Data, LoginData } from '../Redux/Actions';
 
 
 export default function Login(props) {
-    
-
-
 
     const formik = useFormik({
         initialValues: {
@@ -22,18 +19,32 @@ export default function Login(props) {
                 email: Yup.string().email('Su email debe ser valido').required('El email es obligatorio'),
                 password: Yup.string().required('La contraseña es obligatorio')
         }),
-        onSubmit: () => {
-            if(formik.values.email === userDetails.userEmail &&  formik.values.password === userDetails.password){
-                navigation.navigate("Inicio")
-            }
-             else {
-                alert('vuelva a ingresar email o contraseña')
-                // return navigation.navigate("Login")
-            }
+        onSubmit: (value)=>{
+            Handle(value)
         }
+        // (formValue) => {
+        //         // const { info , users} = useSelector(state => state)
+        //         // console.log(users, info)
+        //         console.log(formValue)
+        //         const dispatch = useDispatch();
+        //         dispatch(LoginData(formValue))
+        //         .then((response) => {
+        //           if (response.status == "success") {
+        //             const {navigation} = props;
+        //             navigation.replace("Inicio");
+        //           }
+        //         })
+        //         .catch((error) => {
+        //             console.log(error)
+        //           navigation.replace("Login");
+        //         });
+        //         // if(users.status === "success"){
+        //         //     navigation.navigate("Inicio")
+        //         // }
+        // }
     })
 
-    const {navigation} = props;
+    
    
     //-------LOGIN
     const [email , useEmail] = useState('')
@@ -86,7 +97,7 @@ export default function Login(props) {
             secureTextEntry={true} />   
             <Text style={styles.textError} >{formik.errors.password}</Text>
             <View style={styles.button}>
-                <ButtonGreen  onPress={formik.handleSubmit} text="Iniciar Sesión" />
+                <ButtonGreen title="Login" onPress={formik.handleSubmit} text="Iniciar Sesión" />
             </View>
             <View style={styles.text}>
                 <Text>Me olvide la Contraseña.</Text>
@@ -94,6 +105,26 @@ export default function Login(props) {
         </View>
     </View>
   )
+}
+
+function Handle(datos) {
+    console.log(datos)
+    const dispatch = useDispatch();
+    dispatch(LoginData(datos))
+    .then((response) => {
+      if (response.status == "success") {
+        console.log('puede ingresar')
+        // const {navigation} = props;
+        // navigation.replace("Inicio");
+      }
+    })
+    .catch((error) => {
+        console.log(error)
+    //   navigation.replace("Login");
+    });
+    // if(users.status === "success"){
+    //     navigation.navigate("Inicio")
+    // }
 }
 
 
