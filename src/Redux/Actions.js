@@ -1,13 +1,14 @@
 export const USER = 'USER';
+export const LOGIN = 'LOGIN';
 
 const API_URL = 'Endopoints de luis/'
 
-export function allCountries() {
+export function Login(data) {
     return async (dispatch) => {
-        await axios.get(`${API_URL}`)
+        await axios.post('https://tester-server-production.up.railway.app/api/v1/users/login', data)
         .then(result => {
             return dispatch({
-                type: All_USER,
+                type: LOGIN,
                 payload: result.data // action.payload es la informacion que devuelvo aca
             })
         })

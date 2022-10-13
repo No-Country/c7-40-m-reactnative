@@ -5,9 +5,13 @@ import { userDetails } from '../utils/userDB';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 // import { useDispatch } from 'react-redux';
+// import {SafeAreaView } from 'react-native'
 
 
 export default function Login(props) {
+    
+
+
 
     const formik = useFormik({
         initialValues: {
@@ -32,8 +36,8 @@ export default function Login(props) {
     const {navigation} = props;
    
     //-------LOGIN
-    // const [email , useEmail] = useState('')
-    // const [password, usePassword] = useState('')
+    const [email , useEmail] = useState('')
+    const [password, usePassword] = useState('')
 
     // const getEmail = (event) => {
     //     useEmail(event)

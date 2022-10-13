@@ -1,14 +1,22 @@
+import { LOGIN } from "./Actions";
+
 const inicialState = {
-    username:[]
+    users:[]
 }
 
 const rootReducer = (state = inicialState, action) => {
     switch (action.type) {
-        case USER:
-            
-            break;
-    
+        case LOGIN:
+            return {
+                ...state,
+                users: action.payload
+            }
         default:
-            break;
+            return{
+                ...state
+            }
+            
     }
 }
+
+export default rootReducer;
