@@ -16,7 +16,7 @@ export default function CardComercio(){
           <Text style={styles.title}>La cocina de Toto</Text>
           <Image source={require('../assets/star.png')} />
         </View>
-        <Paragraph style={styles.paragraph}>“ La gente súper servicial y atenta pero hay muy poco surtido en bebidas y otros. “</Paragraph>
+        <Paragraph style={styles.paragraph}>“La gente súper servicial y atenta pero hay muy poco surtido en bebidas y otros. “</Paragraph>
         <Image source={require('../assets/corazones.png')} style={styles.corazones}/>        
       </Card>
     </View>
@@ -29,17 +29,20 @@ const styles = StyleSheet.create({
   container:{
     flexDirection: 'row',
     marginBottom: 20,
-    marginLeft:15
   },
   imageFood:{
-    marginLeft:3
+    marginLeft:15,
+    width:180,
+    height:150,
+    borderRadius:20
   },
   card:{
     borderRadius: 20, 
-    marginLeft: 10,
+    marginLeft: 5,
+    marginRight:15,
     backgroundColor: '#DAF4F0',
     elevation:8,
-    width:'60%'
+    flex:1
   },
   containerTitle:{
     flexDirection:'row',
@@ -56,7 +59,7 @@ const styles = StyleSheet.create({
     marginTop:15
   },
   corazones:{
-    marginLeft:175,
+    marginLeft:120,
     marginTop:25
   }
 
