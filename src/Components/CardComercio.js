@@ -10,11 +10,12 @@ export default function CardComercio(){
 
   return (
     <View style={styles.container}>
-      <Image source={require('../assets/food.png')} style={styles.imageFood}/>
+      {/* <Image source={require('../assets/food.png')} style={styles.imageFood}/> */}
       <Card style={styles.card}>
+      <Image source={require('../assets/food.png')} style={styles.imageFood}/>
         <View style={styles.containerTitle}>
           <Text style={styles.title}>La cocina de Toto</Text>
-          <Image source={require('../assets/star.png')} />
+          {/* <Image source={require('../assets/star.png')} /> */}
         </View>
         <Paragraph style={styles.paragraph}>“La gente súper servicial y atenta pero hay muy poco surtido en bebidas y otros. “</Paragraph>
         <Image source={require('../assets/corazones.png')} style={styles.corazones}/>        
@@ -31,35 +32,36 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   imageFood:{
-    marginLeft:15,
-    width:180,
+    margin:10,
+    width:'auto',
     height:150,
     borderRadius:20
   },
   card:{
     borderRadius: 20, 
-    marginLeft: 5,
+    marginLeft: 15,
     marginRight:15,
     backgroundColor: '#DAF4F0',
     elevation:8,
     flex:1
   },
-  containerTitle:{
-    flexDirection:'row',
-    justifyContent: 'space-between'
-  },
+  // containerTitle:{
+  //   flexDirection:'row',
+  //   justifyContent: 'space-between'
+  // },
   title:{
     fontSize:17,
-    marginTop:5,
-    marginLeft:10,
-    fontWeight:'bold'
+    // marginTop:5,
+    marginLeft:120,
+    fontWeight:'bold',
+    
   },
   paragraph:{
     textAlign:'center',
     marginTop:15
   },
   corazones:{
-    marginLeft:120,
+    marginLeft:320,
     marginTop:25
   }
 
