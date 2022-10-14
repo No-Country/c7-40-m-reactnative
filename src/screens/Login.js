@@ -26,24 +26,24 @@ export default function Login(props) {
                 password: Yup.string().required('La contraseña es obligatorio')
         }),
         onSubmit: (formValue) => {
-                    dispatch(LoginData(formValue))
-                    if(DataUserReducer.users){
-                        navigation.navigate('Inicio')
-                    } alert('Vuelve a ingresar el email o la contraseña')
-
-
-                // dispatch(LoginData(formValue)).then((response) => {
-                //   if (response) {
-                //     navigation.navigate("Inicio");
-                //   }
-                // })
-                // .catch((error) => {
-                //     console.log('error dispach',error)
-                //   navigation.replace("Login");
-                // });
-                // if(users.status === "success"){
-                //     navigation.navigate("Inicio")
-                // }
+                    // dispatch(LoginData(formValue))
+                    // if(DataUserReducer.users){
+                    //     navigation.navigate('Inicio')
+                    // }else{
+                    //     alert('Vuelve a ingresar el email o la contraseña')
+                    // }
+                dispatch(LoginData(formValue)).then((response) => {
+                  if (response) {
+                    navigation.navigate("Inicio");
+                  }
+                })
+                .catch((error) => {
+                    console.log('error dispach',error)
+                  navigation.replace("Login");
+                });
+                if(users.status === "success"){
+                    navigation.navigate("Inicio")
+                }
         }
     })
 
