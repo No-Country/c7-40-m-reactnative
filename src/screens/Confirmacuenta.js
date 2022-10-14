@@ -5,8 +5,8 @@ import ButtonGreen from "./Buttons/ButtonGreen";
 export default function Cuentaconfirmada(props) {
   const { navigation } = props;
 
-  const goToMiperfil = () => {
-    navigation.navigate("MiPerfil");
+  const goToInicio = () => {
+    navigation.navigate("Inicio");
   };
   return (
     <View style={styles.container}>
@@ -19,8 +19,8 @@ export default function Cuentaconfirmada(props) {
       <View>
         <ButtonGreen
           style={styles.button}
-          onPress={goToMiperfil}
-          text="Mi Perfil"
+          onPress={goToInicio}
+          text="Inicio"
         />
       </View>
     </View>

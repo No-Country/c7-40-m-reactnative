@@ -15,7 +15,6 @@ export default function NavigationStack() {
     <Stack.Navigator initialRouteName="Landing">
       <Stack.Screen name="Landing" component={Landing} />
       <Stack.Screen name="Login" component={Login} />
-      <Stack.Screen name="MiPerfil" component={MiPerfil} />
       <Stack.Screen name="Registro" component={Registro} />
       <Stack.Screen name="ConfirmarCuenta" component={ConfirmarCuenta} />
       <Stack.Screen options={{headerShown: false}} name="Inicio" component={BottomTab} />
