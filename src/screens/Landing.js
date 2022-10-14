@@ -8,7 +8,6 @@ import {
 } from "react-native";
 import Back from "../../assets/background.png";
 import ButtonGreen from "./Buttons/ButtonGreen";
-import Icon from "react-native-vector-icons/Ionicons";
 import ButtonGreenLight from "./Buttons/ButtonGreenLight";
 
 export default function Landing(props) {
