@@ -33,26 +33,16 @@ export default function Login(props) {
     // const [email , useEmail] = useState('')
     // const [password, usePassword] = useState('')
 
-    // const getEmail = (event) => {
-    //     useEmail(event)
-    //     //console.log(email)
-    // }
+    const goToInicio= () => {
+        navigation.navigate("Inicio")
+        // if(email === userDetails.username && password === userDetails.password){
+        //     navigation.navigate("Inicio")
+        // } else {
+        //     alert('vuelva a ingresar email o contraseña')
+        //     return navigation.navigate("Login")
+        // }
     
-    // const getPassword = (event) => {
-    //     usePassword(event)
-    //     // console.log(password)
-    // }
-
-    // const goToInicio= () => {
-    
-    //     if(email === userDetails.username && password === userDetails.password){
-    //         navigation.navigate("Inicio")
-    //     } else {
-    //         alert('vuelva a ingresar email o contraseña')
-    //         return navigation.navigate("Login")
-    //     }
-    
-    // }
+    }
 
     const goBack = () => {
         navigation.goBack("Home")
@@ -80,7 +70,9 @@ export default function Login(props) {
             secureTextEntry={true} />   
             <Text style={styles.textError} >{formik.errors.password}</Text>
             <View style={styles.button}>
-                <ButtonGreen  onPress={formik.handleSubmit} text="Iniciar Sesión" />
+                {/* <ButtonGreen  onPress={formik.handleSubmit} text="Iniciar Sesión" /> */}
+                <ButtonGreen  onPress={goToInicio} text="Iniciar Sesión" />
+
             </View>
             <View style={styles.text}>
             <Text>Me olvide la Contraseña.</Text>
