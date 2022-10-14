@@ -3,5 +3,5 @@ import DataUserReducer from "./DataUserReducer";
 
 
 export default combineReducers({
-    Datauser: DataUserReducer
+    DataUserReducer
 })

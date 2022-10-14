@@ -9,8 +9,14 @@ import { Data, LoginData } from '../Redux/Actions';
 
 
 export default function Login(props) {
+    const dispatch = useDispatch(); //hook de redux, esto llama a la action osea lo ejecuta
+    const { navigation } = props; //ya lo vimos // destructurin 
+    const {DataUserReducer} = useSelector((state) => state)
+    // console.log('acaaaa',DataUserReducer.users.data.status)
+    // const acceso = DataUserReducer;
 
-    const formik = useFormik({
+
+    const {errors , values , handleSubmit, setFieldValue} = useFormik({
         initialValues: {
             email: "",
             password: ""
@@ -19,29 +25,26 @@ export default function Login(props) {
                 email: Yup.string().email('Su email debe ser valido').required('El email es obligatorio'),
                 password: Yup.string().required('La contraseña es obligatorio')
         }),
-        onSubmit: (value)=>{
-            Handle(value)
+        onSubmit: (formValue) => {
+                    dispatch(LoginData(formValue))
+                    if(DataUserReducer.users){
+                        navigation.navigate('Inicio')
+                    } alert('Vuelve a ingresar el email o la contraseña')
+
+
+                // dispatch(LoginData(formValue)).then((response) => {
+                //   if (response) {
+                //     navigation.navigate("Inicio");
+                //   }
+                // })
+                // .catch((error) => {
+                //     console.log('error dispach',error)
+                //   navigation.replace("Login");
+                // });
+                // if(users.status === "success"){
+                //     navigation.navigate("Inicio")
+                // }
         }
-        // (formValue) => {
-        //         // const { info , users} = useSelector(state => state)
-        //         // console.log(users, info)
-        //         console.log(formValue)
-        //         const dispatch = useDispatch();
-        //         dispatch(LoginData(formValue))
-        //         .then((response) => {
-        //           if (response.status == "success") {
-        //             const {navigation} = props;
-        //             navigation.replace("Inicio");
-        //           }
-        //         })
-        //         .catch((error) => {
-        //             console.log(error)
-        //           navigation.replace("Login");
-        //         });
-        //         // if(users.status === "success"){
-        //         //     navigation.navigate("Inicio")
-        //         // }
-        // }
     })
 
     
@@ -80,24 +83,24 @@ export default function Login(props) {
         <View style={styles.containerForm}>
             <Text>Email</Text>
             <TextInput 
-            style={ formik.errors.email ? styles.inputError : styles.input }
+            style={ errors.email ? styles.inputError : styles.input }
             placeholder='Ingresa tu email' 
             keyboardType="email-address" 
-            autoCapitalize="none"  
-            value={formik.values.email} 
-            onChangeText={(text) => formik.setFieldValue('email', text)} />
-            <Text style={styles.textError} >{formik.errors.email}</Text>
+            autoCapitalize="none"
+            value={values.email} 
+            onChangeText={(text) => setFieldValue('email', text)} />
+            <Text style={styles.textError} >{errors.email}</Text>
             <Text>Contraseña</Text>
             <TextInput 
-            style={ formik.errors.password ? styles.inputError : styles.input }
+            style={ errors.password ? styles.inputError : styles.input }
             placeholder='Ingresa tu contraseña' 
-            onChangeText={(text) => formik.setFieldValue("password", text)}
+            onChangeText={(text) => setFieldValue("password", text)}
             keyboardType="password"
-            value={formik.values.password} 
+            value={values.password} 
             secureTextEntry={true} />   
-            <Text style={styles.textError} >{formik.errors.password}</Text>
+            <Text style={styles.textError} >{errors.password}</Text>
             <View style={styles.button}>
-                <ButtonGreen title="Login" onPress={formik.handleSubmit} text="Iniciar Sesión" />
+                <ButtonGreen title="Login" onPress={handleSubmit} text="Iniciar Sesión" />
             </View>
             <View style={styles.text}>
                 <Text>Me olvide la Contraseña.</Text>
@@ -107,25 +110,26 @@ export default function Login(props) {
   )
 }
 
-function Handle(datos) {
-    console.log(datos)
-    const dispatch = useDispatch();
-    dispatch(LoginData(datos))
-    .then((response) => {
-      if (response.status == "success") {
-        console.log('puede ingresar')
-        // const {navigation} = props;
-        // navigation.replace("Inicio");
-      }
-    })
-    .catch((error) => {
-        console.log(error)
-    //   navigation.replace("Login");
-    });
-    // if(users.status === "success"){
-    //     navigation.navigate("Inicio")
-    // }
-}
+// function Handle(datos) {
+//     console.log(datos)
+//     const dispatch = useDispatch();
+//     dispatch(LoginData(datos))
+//     .then((response) => {
+//       if (response.status == "success") {
+//         console.log('puede ingresar')
+//         // const {navigation} = props;
+//         // navigation.replace("Inicio");
+//       }
+//     })
+//     .catch((error) => {
+//         console.log(error)
+//     //   navigation.replace("Login");
+//     });
+//     // if(users.status === "success"){
+//     //     navigation.navigate("Inicio")
+//     // }
+// }
+
 
 
 

@@ -9,7 +9,7 @@ const DataUserReducer = (state = inicialState, action) => {
     switch (action.type) {
         case LOGIN_INFO:
             return {
-                ...state,
+                users: action.payload
             }
 
         case DATA:
