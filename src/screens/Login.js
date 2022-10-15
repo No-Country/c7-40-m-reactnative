@@ -86,9 +86,9 @@ export default function Login(props) {
             <Text>Me olvide la Contraseña.</Text>
             </View>
         </View>
-        <TouchableHighlight onPress={goBack} style={styles.buttonVolver}>
+        {/* <TouchableHighlight onPress={goBack} style={styles.buttonVolver}>
             <Image source={require("../assets/BotonVolver.png")}/>
-        </TouchableHighlight>
+        </TouchableHighlight> */}
     </View>
   )
 }
