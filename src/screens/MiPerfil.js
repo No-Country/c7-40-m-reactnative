@@ -1,9 +1,14 @@
 import { Text, View, StyleSheet, TextInput } from "react-native";
 import React from "react";
 // import Navbar from './Navbar';
+import ButtonGreen from "./Buttons/ButtonGreen";
 
 export default function MiPerfil(props) {
   const { navigation } = props;
+
+  const goToLanding= () => {
+    navigation.navigate("Landing")
+  }
 
   return (
     <View style={styles.container}>
@@ -55,6 +60,7 @@ export default function MiPerfil(props) {
           placeholder="**********"
         />
       </View>
+      <ButtonGreen onPress={goToLanding} text='Cerrar Sesion'/>
     </View>
   );
 }
@@ -64,6 +70,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    marginTop:15
   },
   input: {
     height: 44,
