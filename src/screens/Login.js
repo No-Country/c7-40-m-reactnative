@@ -11,13 +11,8 @@ import useAuth from '../hooks/useAuth';
 
 
 export default function Login(props) {
-    const {login } = useAuth()
-   // const dispatch = useDispatch(); //hook de redux, esto llama a la action osea lo ejecuta
-    const { navigation } = props; //ya lo vimos // destructurin 
-    // const {DataUserReducer} = useSelector((state) => state)
-    // console.log('acaaaa',DataUserReducer.users.data.status)
-    // const acceso = DataUserReducer;
-
+    const {loginUser} = useAuth() // hook que trae todos los valors del estado local
+    const { navigation } = props; 
 
     const {errors , values , handleSubmit, setFieldValue} = useFormik({
         initialValues: {
@@ -29,60 +24,21 @@ export default function Login(props) {
                 password: Yup.string().required('La contraseña es obligatorio')
         }),
         onSubmit: (formValue) => {
-                    // dispatch(LoginData(formValue))
-                    // if(DataUserReducer.users){
-                    //     navigation.navigate('Inicio')
-                    // }else{
-                    //     alert('Vuelve a ingresar el email o la contraseña')
-                    // }
                 axios.post('https://tester-server-production.up.railway.app/api/v1/users/login', formValue).then((response) => {
-                  if (response) {
+                  
                     console.log(response.data)
                     if(response.data.status === 'success'){
+                        loginUser(response.data)
                         navigation.navigate("Inicio");  
-                        login(response.data)
-                    } else {
-                        alert('Vuelva a ingresar la contraseña')
-                    } 
-                        
-                  }
+                    }
                 })
                 .catch((error) => {
-                    console.log('error dispach',error)
+                    console.log('error',error)
+                    alert('Vuelve a ingresar el email o la contraseña')
                   navigation.replace("Login");
                 });
-                // if(users.status === "success"){
-                //     navigation.navigate("Inicio")
-                // }
         }
     })
-
-    
-   
-    //-------LOGIN
-    const [email , useEmail] = useState('')
-    const [password, usePassword] = useState('')
-
-    // const getEmail = (event) => {
-    //     useEmail(event)
-    //     //console.log(email)
-    // }
-    
-    // const getPassword = (event) => {
-    //     usePassword(event)
-    //     // console.log(password)
-    // }
-
-    // const goToInicio= () => {
-    
-    //     if(email === userDetails.username && password === userDetails.password){
-    //         navigation.navigate("Inicio")
-    //     } else {
-    //         alert('vuelva a ingresar email o contraseña')
-    //         return navigation.navigate("Login")
-    //     }
-    
-    // }
 
     const goBack = () => {
         navigation.goBack("Home")
@@ -119,27 +75,6 @@ export default function Login(props) {
     </View>
   )
 }
-
-// function Handle(datos) {
-//     console.log(datos)
-//     const dispatch = useDispatch();
-//     dispatch(LoginData(datos))
-//     .then((response) => {
-//       if (response.status == "success") {
-//         console.log('puede ingresar')
-//         // const {navigation} = props;
-//         // navigation.replace("Inicio");
-//       }
-//     })
-//     .catch((error) => {
-//         console.log(error)
-//     //   navigation.replace("Login");
-//     });
-//     // if(users.status === "success"){
-//     //     navigation.navigate("Inicio")
-//     // }
-// }
-
 
 
 

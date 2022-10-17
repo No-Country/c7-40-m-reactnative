@@ -2,11 +2,13 @@ import { Text, View, StyleSheet, Image, TouchableOpacity, TextInput, ScrollView}
 import React from 'react'
 import CardComercio from '../Components/CardComercio';
 import Serch from '../Components/Search';
+import useAuth from '../hooks/useAuth';
 
 
 
 export default function Inicio (props) {
   //console.log(props)
+  const {auth} = useAuth()
 
   const {navigation} = props;
 
@@ -29,7 +31,7 @@ export default function Inicio (props) {
           </TouchableOpacity>
         </View>
   
-        <Text style={styles.title}>Bienvenido!</Text>
+        <Text style={styles.title}>Bienvenido {auth.data.user.firstName}!</Text>
 
         <View style={styles.containerTop}>
           <Text style={styles.textTop}>TOP 10</Text>
