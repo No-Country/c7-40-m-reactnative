@@ -6,10 +6,6 @@ import ButtonGreen from "./Buttons/ButtonGreen";
 export default function MiPerfil(props) {
   const { navigation } = props;
 
-  const goToLanding= () => {
-    navigation.navigate("Landing")
-  }
-
   return (
     <View style={styles.container}>
       <View style={styles.containerForm}>
@@ -60,7 +56,6 @@ export default function MiPerfil(props) {
           placeholder="**********"
         />
       </View>
-      <ButtonGreen onPress={goToLanding} text='Cerrar Sesion'/>
     </View>
   );
 }
