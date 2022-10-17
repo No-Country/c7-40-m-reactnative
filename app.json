@@ -2,6 +2,7 @@
   "expo": {
     "name": "my-app",
     "slug": "my-app",
+    "description": "This app is for helping the planet",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

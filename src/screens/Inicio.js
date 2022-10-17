@@ -22,26 +22,29 @@ export default function Inicio (props) {
           <Serch/>
           <Image source={require('../../assets/busqueda.png')} style={styles.busqueda}/>
         </View>
-        
-        <View style={styles.container}>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={goToProductos}>
-            <Text style={styles.text}>Explorar</Text>
-          </TouchableOpacity>
-        </View>
+        {auth ? 
+        <View>
+          <View style={styles.container}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={goToProductos}>
+              <Text style={styles.text}>Explorar</Text>
+            </TouchableOpacity>
+          </View>
+          <Text style={styles.title}>Bienvenido {auth.data.user.firstName}!</Text>
   
-        <Text style={styles.title}>Bienvenido {auth.data.user.firstName}!</Text>
-
-        <View style={styles.containerTop}>
-          <Text style={styles.textTop}>TOP 10</Text>
-          <Image source={require('../../assets/copa.png')} />
-        </View>
-
-        <CardComercio/>
-        <CardComercio/>
-        <CardComercio/>
-        <CardComercio/>
+          <View style={styles.containerTop}>
+            <Text style={styles.textTop}>TOP 10</Text>
+            <Image source={require('../../assets/copa.png')} />
+          </View>
+  
+          <CardComercio/>
+          <CardComercio/>
+          <CardComercio/>
+          <CardComercio/> 
+        </View> :
+        <Text> Tiene que iniciar sesion para disfrutar de la aplicacion</Text>        
+        }
 
         <Text style={styles}>Menu botones abajo</Text>
       </ScrollView>
