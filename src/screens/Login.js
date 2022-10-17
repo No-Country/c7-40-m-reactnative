@@ -1,13 +1,20 @@
 import { View, TextInput, StyleSheet, Text, Button, Alert,TouchableHighlight ,Image} from 'react-native';
-import React ,{ useState }from 'react';
+import React ,{ useEffect, useState }from 'react';
 import ButtonGreen from './Buttons/ButtonGreen';
 import { userDetails } from '../utils/userDB';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+// import { useDispatch, useSelector } from 'react-redux';
+import { Data, LoginData } from '../Redux/Actions';
+import axios from "axios";
+import useAuth from '../hooks/useAuth';
 
 
 export default function Login(props) {
-    const formik = useFormik({
+    const {loginUser} = useAuth() // hook que trae todos los valors del estado local
+    const { navigation } = props; 
+
+    const {errors , values , handleSubmit, setFieldValue} = useFormik({
         initialValues: {
             email: "",
             password: ""
@@ -16,43 +23,22 @@ export default function Login(props) {
                 email: Yup.string().email('Su email debe ser valido').required('El email es obligatorio'),
                 password: Yup.string().required('La contraseña es obligatorio')
         }),
-        onSubmit: () => {
-            if(formik.values.email === userDetails.userEmail &&  formik.values.password === userDetails.password){
-                navigation.navigate("Inicio")
-            }
-             else {
-                alert('vuelva a ingresar email o contraseña')
-                // return navigation.navigate("Login")
-            }
+        onSubmit: (formValue) => {
+                axios.post('https://tester-server-production.up.railway.app/api/v1/users/login', formValue).then((response) => {
+                  
+                    console.log(response.data)
+                    if(response.data.status === 'success'){
+                        loginUser(response.data)
+                        navigation.navigate("Inicio");  
+                    }
+                })
+                .catch((error) => {
+                    console.log('error',error)
+                    alert('Vuelve a ingresar el email o la contraseña')
+                  navigation.replace("Login");
+                });
         }
     })
-
-    const {navigation} = props;
-   
-    //-------LOGIN
-    // const [email , useEmail] = useState('')
-    // const [password, usePassword] = useState('')
-
-    // const getEmail = (event) => {
-    //     useEmail(event)
-    //     //console.log(email)
-    // }
-    
-    // const getPassword = (event) => {
-    //     usePassword(event)
-    //     // console.log(password)
-    // }
-
-    // const goToInicio= () => {
-    
-    //     if(email === userDetails.username && password === userDetails.password){
-    //         navigation.navigate("Inicio")
-    //     } else {
-    //         alert('vuelva a ingresar email o contraseña')
-    //         return navigation.navigate("Login")
-    //     }
-    
-    // }
 
     const goBack = () => {
         navigation.goBack("Home")
@@ -63,32 +49,29 @@ export default function Login(props) {
         <View style={styles.containerForm}>
             <Text>Email</Text>
             <TextInput 
-            style={ formik.errors.email ? styles.inputError : styles.input }
+            style={ errors.email ? styles.inputError : styles.input }
             placeholder='Ingresa tu email' 
             keyboardType="email-address" 
-            autoCapitalize="none"  
-            value={formik.values.email} 
-            onChangeText={(text) => formik.setFieldValue('email', text)} />
-            <Text style={styles.textError} >{formik.errors.email}</Text>
+            autoCapitalize="none"
+            value={values.email} 
+            onChangeText={(text) => setFieldValue('email', text)} />
+            <Text style={styles.textError} >{errors.email}</Text>
             <Text>Contraseña</Text>
             <TextInput 
-            style={ formik.errors.password ? styles.inputError : styles.input }
+            style={ errors.password ? styles.inputError : styles.input }
             placeholder='Ingresa tu contraseña' 
-            onChangeText={(text) => formik.setFieldValue("password", text)}
+            onChangeText={(text) => setFieldValue("password", text)}
             keyboardType="password"
-            value={formik.values.password} 
+            value={values.password} 
             secureTextEntry={true} />   
-            <Text style={styles.textError} >{formik.errors.password}</Text>
+            <Text style={styles.textError} >{errors.password}</Text>
             <View style={styles.button}>
-                <ButtonGreen  onPress={formik.handleSubmit} text="Iniciar Sesión" />
+                <ButtonGreen title="Login" onPress={handleSubmit} text="Iniciar Sesión" />
             </View>
             <View style={styles.text}>
-            <Text>Me olvide la Contraseña.</Text>
+                <Text>Me olvide la Contraseña.</Text>
             </View>
         </View>
-        {/* <TouchableHighlight onPress={goBack} style={styles.buttonVolver}>
-            <Image source={require("../assets/BotonVolver.png")}/>
-        </TouchableHighlight> */}
     </View>
   )
 }
