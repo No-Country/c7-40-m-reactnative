@@ -4,14 +4,17 @@ import ButtonGreen from './Buttons/ButtonGreen';
 import { userDetails } from '../utils/userDB';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useDispatch, useSelector } from 'react-redux';
+// import { useDispatch, useSelector } from 'react-redux';
 import { Data, LoginData } from '../Redux/Actions';
+import axios from "axios";
+import useAuth from '../hooks/useAuth';
 
 
 export default function Login(props) {
-    const dispatch = useDispatch(); //hook de redux, esto llama a la action osea lo ejecuta
+    const {login } = useAuth()
+   // const dispatch = useDispatch(); //hook de redux, esto llama a la action osea lo ejecuta
     const { navigation } = props; //ya lo vimos // destructurin 
-    const {DataUserReducer} = useSelector((state) => state)
+    // const {DataUserReducer} = useSelector((state) => state)
     // console.log('acaaaa',DataUserReducer.users.data.status)
     // const acceso = DataUserReducer;
 
@@ -32,18 +35,25 @@ export default function Login(props) {
                     // }else{
                     //     alert('Vuelve a ingresar el email o la contraseña')
                     // }
-                dispatch(LoginData(formValue)).then((response) => {
+                axios.post('https://tester-server-production.up.railway.app/api/v1/users/login', formValue).then((response) => {
                   if (response) {
-                    navigation.navigate("Inicio");
+                    console.log(response.data)
+                    if(response.data.status === 'success'){
+                        navigation.navigate("Inicio");  
+                        login(response.data)
+                    } else {
+                        alert('Vuelva a ingresar la contraseña')
+                    } 
+                        
                   }
                 })
                 .catch((error) => {
                     console.log('error dispach',error)
                   navigation.replace("Login");
                 });
-                if(users.status === "success"){
-                    navigation.navigate("Inicio")
-                }
+                // if(users.status === "success"){
+                //     navigation.navigate("Inicio")
+                // }
         }
     })
 
