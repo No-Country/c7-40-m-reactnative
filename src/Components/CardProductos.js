@@ -35,17 +35,20 @@ const styles = StyleSheet.create({
   container:{
     flexDirection: 'row',
     marginBottom: 20,
-    marginLeft:15
   },
   imageFood:{
-    marginLeft:3
+    marginLeft:15,
+    width:180,
+    height:150,
+    borderRadius:20,
   },
   card:{
     borderRadius: 20, 
     marginLeft: 5,
+    marginRight:15,
     backgroundColor: '#DAF4F0',
     elevation:8,
-    width:'60%'
+    flex:1
   },
   containerTitle:{
     flexDirection:'row',
@@ -63,12 +66,11 @@ const styles = StyleSheet.create({
   },
   containerCart:{
     flexDirection:'row',
-    justifyContent:'space-around',
     marginTop:30
   },
   ubicacion:{
     flexDirection:'row',
-    marginRight:50
+    marginRight:30
   },
   precio:{
     fontSize:20
