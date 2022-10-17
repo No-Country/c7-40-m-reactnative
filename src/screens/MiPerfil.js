@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, TextInput } from "react-native";
+import { Text, View, StyleSheet, TextInput, Button } from "react-native";
 import React from "react";
 import { userDetails } from "../utils/userDB";
 // import Navbar from './Navbar';
@@ -25,9 +25,8 @@ const {auth, logoutUser} = useAuth()
 
   return (
     <View style={styles.container}>
-      <View style={styles.containerForm}>
+      <View>
         <Text style={styles.title}>Mi Perfil</Text>
-
         <Text>Nombre</Text>
         <TextInput
           style={styles.input}
