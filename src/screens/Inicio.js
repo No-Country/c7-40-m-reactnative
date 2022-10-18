@@ -13,7 +13,7 @@ export default function Inicio (props) {
   const {auth} = useAuth()
 
   const {navigation} = props;
-
+  
   const goToProductos= () => {
     navigation.navigate("Productos")
   }
@@ -47,7 +47,6 @@ export default function Inicio (props) {
         </View> :
         <Text> Tiene que iniciar sesion para disfrutar de la aplicacion</Text>        
         }
-
         <Text style={styles}>Menu botones abajo</Text>
       </ScrollView>
     )
