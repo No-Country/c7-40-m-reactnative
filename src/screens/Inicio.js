@@ -29,11 +29,12 @@ export default function Inicio (props) {
         {auth ? 
         <View>
           <View style={styles.container}>
-            <TouchableOpacity
+            <ButtonOrange onPress={goToProductos} text='Explorar' />
+            {/* <TouchableOpacity
               style={styles.button}
               onPress={goToProductos}>
               <Text style={styles.text}>Explorar</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
           </View>
           <Text style={styles.title}>Bienvenido {auth.data.user.firstName}!</Text>
   
@@ -43,7 +44,7 @@ export default function Inicio (props) {
           </View>
           {comercioDetails?.map(obj => {
             return(
-            <View>
+            <View key={obj.id}>
               <CardComercio key={obj.id} details={obj.details} coment={obj.details.coment} />
             </View>
             )
