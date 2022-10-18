@@ -44,7 +44,7 @@ export default function Inicio (props) {
           {comercioDetails?.map(obj => {
             return(
             <View>
-              <CardComercio id={obj.id} details={obj.details} coment={obj.details.coment} />
+              <CardComercio key={obj.id} details={obj.details} coment={obj.details.coment} />
             </View>
             )
           })}
