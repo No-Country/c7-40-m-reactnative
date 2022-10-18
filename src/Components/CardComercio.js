@@ -4,20 +4,20 @@ import {Card, Paragraph} from 'react-native-paper';
 
 const {width} = Dimensions.get ('window');
 
-export default function CardComercio(){
+export default function CardComercio({details, coment }){
 
-    // const{nombre, comentarios } = props //Destructuring Props
 
   return (
     <View style={styles.container}>
-      {/* <Image source={require('../assets/food.png')} style={styles.imageFood}/> */}
       <Card style={styles.card}>
-      <Image source={require('../assets/food.png')} style={styles.imageFood}/>
-        <View style={styles.containerTitle}>
-          <Text style={styles.title}>La cocina de Toto</Text>
-          {/* <Image source={require('../assets/star.png')} /> */}
-        </View>
-        <Paragraph style={styles.paragraph}>“La gente súper servicial y atenta pero hay muy poco surtido en bebidas y otros. “</Paragraph>
+      <Image source={{
+          uri: `${details.logoCommerce}`,
+        }}style={styles.imageFood}/>
+          <View style={styles.containerTitle}>
+            <Text style={styles.title}>{details.name}</Text>
+          </View>
+          <Text>{coment.name}</Text>
+          <Paragraph style={styles.paragraph}>"{coment.details}"</Paragraph>
         <Image source={require('../assets/corazones.png')} style={styles.corazones}/>        
       </Card>
     </View>

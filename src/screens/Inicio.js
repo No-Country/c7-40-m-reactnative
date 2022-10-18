@@ -5,11 +5,10 @@ import Serch from '../Components/Search';
 import ButtonOrange from './Buttons/ButtonOrange';
 import Constants from 'expo-constants';
 import useAuth from '../hooks/useAuth';
-
+import { comercioDetails } from '../utils/userDB'; 
 
 
 export default function Inicio (props) {
-  //console.log(props)
   const {auth} = useAuth()
 
   const {navigation} = props;
@@ -17,6 +16,9 @@ export default function Inicio (props) {
   const goToProductos= () => {
     navigation.navigate("Productos")
   }
+
+
+  
     return (
       <ScrollView style={styles.bg}>
         <View style={styles.containerMenu}>
@@ -39,11 +41,13 @@ export default function Inicio (props) {
             <Text style={styles.textTop}>TOP 10</Text>
             <Image source={require('../../assets/copa.png')} />
           </View>
-  
-          <CardComercio/>
-          <CardComercio/>
-          <CardComercio/>
-          <CardComercio/> 
+          {comercioDetails?.map(obj => {
+            return(
+            <View>
+              <CardComercio id={obj.id} details={obj.details} coment={obj.details.coment} />
+            </View>
+            )
+          })}
         </View> :
         <Text> Tiene que iniciar sesion para disfrutar de la aplicacion</Text>        
         }
