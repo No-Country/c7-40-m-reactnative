@@ -11,7 +11,7 @@ import useAuth from '../hooks/useAuth';
 
 
 export default function Login(props) {
-    const {loginUser} = useAuth() // hook que trae todos los valors del estado local
+    const { loginUser } = useAuth() // hook que trae todos los valors del estado global
     const { navigation } = props; 
 
     const {errors , values , handleSubmit, setFieldValue} = useFormik({
@@ -25,7 +25,6 @@ export default function Login(props) {
         }),
         onSubmit: (formValue) => {
                 axios.post('https://tester-server-production.up.railway.app/api/v1/users/login', formValue).then((response) => {
-                  
                     console.log(response.data)
                     if(response.data.status === 'success'){
                         loginUser(response.data)

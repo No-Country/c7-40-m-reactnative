@@ -9,7 +9,7 @@ export const AuthContext = createContext({
 // Provaider son todas las acciones que van hacer nuestro conexto, por ejemplo para hacer login y logout
 
 export function AuthProvider(props) { //
-    const {children} = props//va recibir todas las funcionalidades como por ejemplo el de NavigationContainer que le da props a todos los otros contenedores como Navigate
+    const { children } = props//va recibir todas las funcionalidades como por ejemplo el de NavigationContainer que le da props a todos los otros contenedores como Navigate
 
     // const {chilren} = props;
     const [auth, setAuth ]= useState(undefined);
