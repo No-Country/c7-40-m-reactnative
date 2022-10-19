@@ -2,7 +2,7 @@ import { View, Text, Image, StyleSheet} from 'react-native'
 import React from 'react'
 import {Card, Paragraph} from 'react-native-paper';
 
-const {width} = Dimensions.get ('window');
+// const {width} = Dimensions.get ('window');
 
 export default function CardComercio({details, coment }){
 

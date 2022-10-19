@@ -1,10 +1,26 @@
 import { Text, View, StyleSheet, Image, TouchableOpacity, ScrollView} from 'react-native'
-import React from 'react'
-import CardProductos from '../Components/CardProductos';
+import React, { useEffect } from 'react'
 import ButtonOrange from './Buttons/ButtonOrange';
+import axios from 'axios';
+import useAuth from '../hooks/useAuth';
+import CardProductos from '../Components/CardProductos';
 
 export default function Inicio (props) {
-  console.log(props)
+  const { getProducts, productos} = useAuth()
+  // if(productos != undefined){
+  //   const productosDisponibles = productos
+  //   return productosDisponibles
+  // } else {
+  //   const productosNoDisponible = 
+  // }
+  console.log('PRODUCTOS', productos)
+  useEffect(()=>{
+    axios.get('https://tester-server-production.up.railway.app/api/v1/products/').then((response) => {
+      getProducts(response.data.data.products)
+    }).catch((error)=>{
+      console.log('error get products', error)
+    })
+  },[])
 
   const {navigation} = props;
 
@@ -17,16 +33,24 @@ export default function Inicio (props) {
           <Text style={styles.productos}>PRODUCTOS</Text>
           <Image source={require('../assets/hambur.png')} />
         </View>
-        
         <View style={styles.containerButton}>
           <ButtonOrange style={styles.ButtonOrange} onPress={goToSettings} text="Filtrar" />
         </View>
-
-        <CardProductos/>
-        <CardProductos/>
-        <CardProductos/>
-        <CardProductos/>
-
+        {productos.length === 0 ? 
+        <Text>No hay productos disponibles</Text>
+        :
+        productos.map((a) => (
+            <View key={a.id}>
+              <CardProductos 
+              name={a.name} 
+              img={a.productImgs} 
+              price={a.price} 
+              quantity={a.quantity} 
+              description={a.description} 
+              commerce={a.commerce} />
+            </View>
+     ))
+      }
       </ScrollView>
     )
 }

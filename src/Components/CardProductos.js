@@ -2,7 +2,7 @@ import { View, Text, Image, StyleSheet} from 'react-native'
 import React from 'react'
 import {Card, Paragraph} from 'react-native-paper';
 
-export default function CardComercio(){
+export default function CardProductos({name, img, price, quantity, description, commerce }){
 
     // const{nombre, comentarios } = props //Destructuring Props
 
@@ -11,7 +11,8 @@ export default function CardComercio(){
       <Card style={styles.card}>
       <Image source={require('../assets/food.png')} style={styles.imageFood}/>
         <View style={styles.containerTitle}>
-          <Text style={styles.title}>Pack Frutal</Text>
+          <Text style={styles.title}>{name}</Text>
+          <Image source={require('../assets/star.png')} />
         </View>
         <Paragraph style={styles.paragraph}>Contiene una gran cantidad de frutas de temporada.</Paragraph>
         <View style={styles.containerCart}>
