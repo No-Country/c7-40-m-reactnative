@@ -43,7 +43,7 @@ export default function Inicio (props) {
             <View key={a.id}>
               <CardProductos 
               name={a.name} 
-              img={a.productImgs} 
+              img={a.productImgs}
               price={a.price} 
               quantity={a.quantity} 
               description={a.description} 
