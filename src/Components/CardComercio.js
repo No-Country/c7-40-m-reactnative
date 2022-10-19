@@ -1,8 +1,8 @@
-import { View, Text, Image, StyleSheet,Dimensions} from 'react-native'
+import { View, Text, Image, StyleSheet} from 'react-native'
 import React from 'react'
 import {Card, Paragraph} from 'react-native-paper';
 
-const {width} = Dimensions.get ('window');
+// const {width} = Dimensions.get ('window');
 
 export default function CardComercio({details, coment }){
 
@@ -45,24 +45,18 @@ const styles = StyleSheet.create({
     elevation:8,
     flex:1
   },
-  // containerTitle:{
-  //   flexDirection:'row',
-  //   justifyContent: 'space-between'
-  // },
   title:{
     fontSize:17,
-    // marginTop:5,
     marginLeft:120,
     fontWeight:'bold',
-    
   },
   paragraph:{
     textAlign:'center',
-    marginTop:15
+    marginTop:5,
+    padding:5
   },
   corazones:{
-    marginLeft:320,
-    marginTop:25
+   marginLeft:160
   }
 
 })

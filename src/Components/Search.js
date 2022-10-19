@@ -11,12 +11,11 @@ export default function Search(){
 const styles = StyleSheet.create({
     input:{
         borderWidth: 1,
-        padding: 5,
         borderRadius:15,
-        width:130,
         height:40,
         borderColor:'#184D47',
-        marginLeft:75
+        width:140,
+        marginLeft:20
       }
 })
 

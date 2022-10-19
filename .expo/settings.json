@@ -1,0 +1,14 @@
+{
+  "hostType": "tunnel",
+  "lanType": "ip",
+  "dev": true,
+  "minify": false,
+<<<<<<< HEAD
+  "urlRandomness": "mj-kh6",
+=======
+  "urlRandomness": "w6-rxf",
+>>>>>>> inicio
+  "https": false,
+  "scheme": null,
+  "devClient": false
+}

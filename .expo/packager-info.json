@@ -1,0 +1,17 @@
+{
+<<<<<<< HEAD
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
+  "expoServerPort": null,
+  "packagerPort": null,
+=======
+  "expoServerPort": null,
+  "packagerPort": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
+>>>>>>> inicio
+  "packagerPid": null,
+  "webpackServerPort": null
+}
