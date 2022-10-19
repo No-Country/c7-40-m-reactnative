@@ -9,7 +9,8 @@ const Carrito = () => {
   const {auth} = useAuth()
   // console.log(auth.data.token);
   const [data , setData] = useState([])
-
+  const dataQuantity = data[0].productsInCarts?.map(a => a.quantity)
+  console.log("DATAAA", dataQuantity);
   useEffect(()=>{
     axios.get('https://tester-server-production.up.railway.app/api/v1/cart/' , {
       headers: {
@@ -34,7 +35,7 @@ const Carrito = () => {
       <View style={styles.conteinerCard}>
         {data? data.map((obj)=> (
             <View key={obj.id}>
-            <CardProductosCarrito key={obj.id} id={obj.id} data={obj.productsInCarts}  dataQuantity={data} />
+            <CardProductosCarrito key={obj.id} id={obj.id} details={obj.productsInCarts}  dataQuan={dataQuantity} />
           </View>
         )) :
         <Text>No tiene productos en su carrito 🥹</Text>

@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react'
 import { Button } from 'react-native-paper'
 import axios from 'axios'
 
-export default function CardProductosCarrito({id, data, token, dataQuantity}) {
-  
+export default function CardProductosCarrito({id, details, token, dataQuantity}) {
+  // console.log(dataQuantity[0].productsInCarts.map(a=>{a}))
   const [count , setCount] = useState(
     dataQuantity
   )
@@ -61,7 +61,7 @@ export default function CardProductosCarrito({id, data, token, dataQuantity}) {
 
   return (
     <>
-    {data? data.map((obj)=> (
+    {details? details.map((obj)=> (
       <View key={obj.productId}>
         <Text>{obj.product.commerce.name}</Text>
          <Text>{obj.product.name}</Text>
