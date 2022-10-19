@@ -9,7 +9,9 @@ export default function CardProductos({name, img, price, quantity, description, 
 
   return (
     <View style={styles.container}>
-      <Image source={require('../assets/food.png')} style={styles.imageFood}/>
+      <Image source={{
+        uri: `${img[0].imgUrl}`
+      }} style={styles.imageFood}/>
       <Card style={styles.card}>
         <View style={styles.containerTitle}>
           <Text style={styles.title}>{name}</Text>
