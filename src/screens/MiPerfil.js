@@ -12,13 +12,14 @@ const {auth, logoutUser} = useAuth()
   const logout = () => {
     logoutUser()
     navigation.navigate("Landing");
+    undefined
   };
 
   return (
     <View style={styles.container}>
-
+      {auth? 
+      <View>
         <Text style={styles.title}>Mi Perfil</Text>
-
         <View style={styles.containerData}>
           <Text style={styles.subtitle}>Nombre</Text>
           <Text style={styles.data}>{auth.data.user.firstName}</Text> 
@@ -43,7 +44,9 @@ const {auth, logoutUser} = useAuth()
           <Text style={styles.subtitle}>Email</Text>
           <Text style={styles.data}>{auth.data.user.email}</Text> 
         </View>  
-
+      </View> :
+      <Text> Debe iniciar sesion</Text>
+    }
       <View>
         <ButtonGreen onPress={logout} text="Cerrar Sesion" />
       </View>

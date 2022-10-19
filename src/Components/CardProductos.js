@@ -1,31 +1,72 @@
-import { View, Text, Image, StyleSheet} from 'react-native'
-import React from 'react'
-import {Card, Paragraph} from 'react-native-paper';
+import { View, Text, Image, StyleSheet,TouchableHighlight} from 'react-native'
+import React, { useState } from 'react'
+import {Button, Card, Paragraph} from 'react-native-paper';
+import axios from 'axios';
 
-export default function CardProductos({name, img, price, quantity, description, commerce }){
+export default function CardProductos({token,id,name, img, price, description, commerce }){
 
-    // const{nombre, comentarios } = props //Destructuring Props
+  // console.log(token)
+  const [quan, setQuantity] = useState(0)
+
+  const plasProduct = () => {
+    setQuantity(quan+1)
+  }
+
+//   const config =(token)=> {
+//     return{
+//       headers: { Authorization: `Bearer ${token}` }
+//     }
+// };
+
+
+  const dispatchProduct ={
+    productId: id,
+    quantity: quan
+  }
+  const AddProduct = () => {
+    console.log("TOKEN", token)
+    axios.post('https://tester-server-production.up.railway.app/api/v1/cart/add-product/', dispatchProduct, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      },
+    } )
+    .then(res=>{
+      console.log(res)
+      alert('su producto se agrego')
+    })
+    .catch(error=>{
+      console.log("error addProduct", error.message)
+    })
+  }
 
   return (
     <View style={styles.container}>
+      <Card style={styles.card}>
+      <Text></Text>
+      <Text style={styles.title}>{commerce.name}</Text>
       <Image source={{
         uri: `${img[0].imgUrl}`
       }} style={styles.imageFood}/>
-      <Card style={styles.card}>
-      <Image source={require('../assets/food.png')} style={styles.imageFood}/>
+      {/* <Image source={require('../assets/food.png')} style={styles.imageFood}/> */}
         <View style={styles.containerTitle}>
-          <Text style={styles.title}>{name}</Text>
-          <Image source={require('../assets/star.png')} />
+          <Text>{name}</Text>
+          {/* <Image source={require('../assets/star.png')} /> */}
         </View>
-        <Paragraph style={styles.paragraph}>Contiene una gran cantidad de frutas de temporada.</Paragraph>
+        <Paragraph style={styles.paragraph}>{description}</Paragraph>
         <View style={styles.containerCart}>
             <View style={styles.ubicacion}>
               <Image source={require('../assets/ubicacion.png')}/>   
-              <Text>Villa Crespo</Text>
+              <Text>{commerce.address}</Text>
             </View>
-            <Text style={styles.precio}>$10</Text>
-            <Image source={require('../assets/cart.png')}/> 
-        </View>     
+            <Text style={styles.precio}>{price}</Text>
+            <TouchableHighlight
+              onPress={AddProduct}>
+              <Image source={require('../assets/cart.png')}/> 
+            </TouchableHighlight>
+            <Button onPress={plasProduct} >+</Button>
+            <Text>{quan}</Text>
+            {/* <Image source={require('../assets/cart.png')}/>  */}
+        </View>  
       </Card>
     </View>
 

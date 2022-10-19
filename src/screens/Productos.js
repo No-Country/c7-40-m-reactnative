@@ -6,7 +6,7 @@ import useAuth from '../hooks/useAuth';
 import CardProductos from '../Components/CardProductos';
 
 export default function Inicio (props) {
-  const { getProducts, productos} = useAuth()
+  const { getProducts, productos, auth} = useAuth()
   // if(productos != undefined){
   //   const productosDisponibles = productos
   //   return productosDisponibles
@@ -42,10 +42,12 @@ export default function Inicio (props) {
         productos.map((a) => (
             <View key={a.id}>
               <CardProductos 
+              token= {auth.data.token}
+              id={a.id}
               name={a.name} 
               img={a.productImgs}
               price={a.price} 
-              quantity={a.quantity} 
+              cantidad={a.quantity} 
               description={a.description} 
               commerce={a.commerce} />
             </View>
