@@ -2,6 +2,7 @@ import { Text, View, StyleSheet, TextInput, Button } from "react-native";
 import React from "react";
 import { userDetails } from "../utils/userDB";
 // import Navbar from './Navbar';
+import useAuth from '../hooks/useAuth';
 
 export default function MiPerfil(props) {
   const { navigation } = props;
