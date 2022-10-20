@@ -52,13 +52,19 @@ export default function CardProductos({token,id,name, img, price, description, c
               <Image source={require('../assets/ubicacion.png')}/>   
               <Text style={styles.textUbicacion}>Villa Crespo</Text>
             </View>
-            <Text style={styles.precio}>{price}</Text>
+              <Text style={styles.precio}>${price}</Text>
+              <TouchableHighlight
+                onPress={AddProduct}>
+                <Image source={require('../assets/cart.png')}/> 
+              </TouchableHighlight>
+            <View style={styles.containerSuma}>
             <TouchableHighlight
-              onPress={AddProduct}>
-              <Image source={require('../assets/cart.png')}/> 
+              onPress={plasProduct}>
+              <Text style={styles.suma}>+</Text>
             </TouchableHighlight>
-            <Button onPress={plasProduct} >+</Button>
-            <Text>{quan}</Text>
+              <Text style={styles.suma}>{quan}</Text>
+            </View>
+            
             {/* <Image source={require('../assets/cart.png')}/>  */}
         </View>  
       </Card>
@@ -100,20 +106,26 @@ const styles = StyleSheet.create({
   },
   containerCart:{
     flexDirection:'row',
-    marginTop:15
+    marginTop:15,
+    justifyContent:'space-evenly',
+    alignItems:'center',
+    marginBottom:5
   },
   ubicacion:{
     flexDirection:'row',
-    marginRight:50,
-    marginLeft:85,
   },
   textUbicacion:{
     fontFamily:'poppins-light'
   },
   precio:{
     fontSize:20,
-    marginBottom:10,
     fontFamily:'poppins-light'
+  },
+  containerSuma:{
+    flexDirection:'row',
+  },
+  suma:{
+    fontSize:20
   }
 
 })

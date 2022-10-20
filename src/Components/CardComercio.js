@@ -19,7 +19,10 @@ export default function CardComercio({details, coment }){
         }}style={styles.imageFood}/>
           <Text style={styles.name}>{coment.name}</Text>
           <Paragraph style={styles.paragraph}>"{coment.details}"</Paragraph>
-        <Image source={require('../assets/corazones.png')} style={styles.corazones}/>        
+        <View style={styles.containerCorazones}>
+          <Image source={require('../assets/corazones.png')}/> 
+        </View>
+               
       </Card>
     </View>
 
@@ -62,9 +65,9 @@ const styles = StyleSheet.create({
     padding:10,
     fontFamily:'poppins-italic'
   },
-  corazones:{
-   marginLeft:160,
-   marginBottom:5
+  containerCorazones:{
+    alignItems:'center',
+    marginBottom:5
   }
 
 })
