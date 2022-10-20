@@ -6,7 +6,7 @@ import axios from 'axios';
 export default function CardProductos({token,id,name, img, price, description, commerce }){
 
   // console.log(token)
-  const [quan, setQuantity] = useState(0)
+  const [quan, setQuantity] = useState(1)
 
   const plasProduct = () => {
     setQuantity(quan+1)
