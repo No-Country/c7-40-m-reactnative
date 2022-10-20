@@ -18,7 +18,7 @@ export default function NavigationStack() {
       <Stack.Screen options={{headerShown: false}} name="Landing" component={Landing} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Registro" component={Registro} />
-      <Stack.Screen name="Productos" component={Productos} />
+      <Stack.Screen name="Producto" component={Productos} />
       <Stack.Screen name="Settings" component={SettingsScreen} />
       <Stack.Screen name="ConfirmarCuenta" component={ConfirmarCuenta} />
       <Stack.Screen options={{headerShown: false}} name="Inicio" component={BottomTab} />

@@ -13,8 +13,8 @@ export default function Inicio (props) {
 
   const {navigation} = props;
   
-  const goToProductos= () => {
-    navigation.navigate("Productos")
+  const goToSettings= () => {
+    navigation.navigate("SettingsScreen")
   }
 
 
@@ -29,7 +29,7 @@ export default function Inicio (props) {
         {auth ? 
         <View>
           <View style={styles.container}>
-            <ButtonOrange onPress={goToProductos} text='Explorar' />
+            <ButtonOrange onPress={goToSettings} text='Filtrar' />
             {/* <TouchableOpacity
               style={styles.button}
               onPress={goToProductos}>
