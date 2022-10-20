@@ -1,40 +1,25 @@
-import { View, Text ,StyleSheet, Image } from 'react-native'
+import { View, Text ,StyleSheet, Image, Button,TouchableHighlight } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { Button } from 'react-native-paper'
 import axios from 'axios'
 
-export default function CardProductosCarrito({id, details, token, dataQuantity}) {
-  // console.log(dataQuantity[0].productsInCarts.map(a=>{a}))
-  const [count , setCount] = useState(
-    dataQuantity
-  )
-  // useEffect(()=>{
-
-  //   axios.patch('https://tester-server-production.up.railway.app/api/v1/cart/add-product/update-cart', {
-  //     productId: id,
-  //     quantity: count
-  //   }, {
-  //     headers: {
-  //       'Authorization': `Bearer ${token}`
-  //     },
-  //   } ).then(res=> {
-  //     console.log(res)
-  //   }).catch(error)
-  // },[])
+export default function CardProductosCarrito({id, name, commerce, price, description, quantity, token, navigation}) {
+  console.log(token)
+  const [count , setCount] = useState(quantity)
   
   const dispatchPath = () =>{
-    const quantity = count
-    const productId = id
-    axios.patch('https://tester-server-production.up.railway.app/api/v1/cart/add-product/update-cart', {
-      productId,
-      quantity
+
+    axios.patch('https://tester-server-production.up.railway.app/api/v1/cart/update-cart', {
+      productId: id,
+      quantity: count
     }, {
       headers: {
-        'Authorization': `Bearer ${token}`
+        "Authorization": `Bearer ${token}`
       },
     } ).then(res=> {
-      console.log(res)
-    }).catch(error)
+      console.log('ok')
+    }).catch(error=>{
+      console.log(error)
+    })
   } 
 
   const AddProducts = () => {
@@ -42,17 +27,20 @@ export default function CardProductosCarrito({id, details, token, dataQuantity})
     dispatchPath()
   }
   const SubtractProducts = ()=> {
-
+    setCount(count-1)
+    dispatchPath()
   }
 
-  const DeleteProduct = (id , name) => {
-    axios.delete(`https://tester-server-production.up.railway.app/api/v1/cart/:${id}`, {
-      headers: {
-        'Authorization': `Bearer ${token}`
-      },
-    })
-    .then(res => {
+  const DeleteProduct = () => {
+    const productId = id
+
+    axios.delete(`https://tester-server-production.up.railway.app/api/v1/cart/${productId}`, 
+    { headers: { 
+      'Authorization': `Bearer ${token}`
+    }})
+    .then((res) => {
       alert(`Su producto ${name} fue eliminado`)
+      navigation.push("Productos")
     })
     .catch((error)=>{
       console.log(error)
@@ -61,23 +49,23 @@ export default function CardProductosCarrito({id, details, token, dataQuantity})
 
   return (
     <>
-    {details? details.map((obj)=> (
-      <View key={obj.productId}>
-        <Text>{obj.product.commerce.name}</Text>
-         <Text>{obj.product.name}</Text>
+      <View >
+        <Text>{commerce}</Text>
+         <Text>{name}</Text>
        <View style={Style.ConteinerDatos}>
-         <Text>$ {obj.product.price}</Text>
+         <Text>$ {price}</Text>
        </View>
        <View style={Style.conteinerContador}>
-         <Text>Cantidad {obj.quantity}</Text>
-         <Button onPress={AddProducts} >+</Button>
-         <Button onPress={SubtractProducts}>-</Button>
-         {/* <Button onPress={DeleteProduct(obj.productId, obj.product.name)} >Eliminar</Button> */}
+         <Text>{count}</Text>
+         <TouchableHighlight onPress={AddProducts}>
+          <Text>+</Text>
+        </TouchableHighlight>         
+        <Button onPress={SubtractProducts} title="-" />
+         <Button onPress={DeleteProduct} title="Eliminar"/>
        </View>
         </View>
-    )) :
-    <Text>No tiene productos en su carrito 🥹</Text>
-    }
+    {/* <Text>No tiene productos en su carrito 🥹</Text> */}
+  
     </>
   )
 }

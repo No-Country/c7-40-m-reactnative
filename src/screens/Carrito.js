@@ -5,16 +5,18 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import CardProductosCarrito from "../Components/CardProductosCarrito";
 import useAuth from "../hooks/useAuth";
 
-const Carrito = () => {
+const Carrito = (props) => {
   const {auth} = useAuth()
+  const {navigation} = props;
+  console.log(navigation)
   // console.log(auth.data.token);
   const [data , setData] = useState([])
-  const dataQuantity = data[0].productsInCarts?.map(a => a.quantity)
-  console.log("DATAAA", dataQuantity);
+  // const dataQuantity = data[0].productsInCarts?.map(a => a.quantity)
+  const token = auth ? auth.data.token : undefined;
   useEffect(()=>{
     axios.get('https://tester-server-production.up.railway.app/api/v1/cart/' , {
       headers: {
-        'Authorization': `Bearer ${auth.data.token}`
+        'Authorization': `Bearer ${token}`
       },
     }).then(res => {
       setData([res.data.data.cart])
@@ -23,9 +25,7 @@ const Carrito = () => {
       console.log(error)
     })
   },[])
-
-  // console.log("estoy acaaa",data)
-
+  // console.log(data[0].productsInCarts)
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.title}>
@@ -33,9 +33,18 @@ const Carrito = () => {
       <Image style={styles.image} source={require('../assets/carrito.png')} />
       </View>
       <View style={styles.conteinerCard}>
-        {data? data.map((obj)=> (
+        {data? data[0]?.productsInCarts.map((obj)=> (
             <View key={obj.id}>
-            <CardProductosCarrito key={obj.id} id={obj.id} details={obj.productsInCarts}  dataQuan={dataQuantity} />
+            <CardProductosCarrito 
+            id={obj.productId} 
+            name={obj.product.name} 
+            commerce={obj.product.commerce.name}
+            price={obj.product.price}
+            quantity={obj.quantity}
+            description={obj.product.description}
+            token={token}
+            navigation={navigation}
+             />
           </View>
         )) :
         <Text>No tiene productos en su carrito 🥹</Text>
