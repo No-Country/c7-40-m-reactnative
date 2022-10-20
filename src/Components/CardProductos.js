@@ -42,21 +42,15 @@ export default function CardProductos({token,id,name, img, price, description, c
   return (
     <View style={styles.container}>
       <Card style={styles.card}>
-      <Text></Text>
-      <Text style={styles.title}>{commerce.name}</Text>
-      <Image source={{
-        uri: `${img[0].imgUrl}`
-      }} style={styles.imageFood}/>
-      {/* <Image source={require('../assets/food.png')} style={styles.imageFood}/> */}
         <View style={styles.containerTitle}>
-          <Text>{name}</Text>
-          {/* <Image source={require('../assets/star.png')} /> */}
+          <Text style={styles.title}>{name}</Text>
         </View>
-        <Paragraph style={styles.paragraph}>{description}</Paragraph>
+      <Image source={require('../assets/food.png')} style={styles.imageFood}/>
+        <Paragraph style={styles.paragraph}>Contiene una gran cantidad de frutas de temporada.</Paragraph>
         <View style={styles.containerCart}>
             <View style={styles.ubicacion}>
               <Image source={require('../assets/ubicacion.png')}/>   
-              <Text>{commerce.address}</Text>
+              <Text style={styles.textUbicacion}>Villa Crespo</Text>
             </View>
             <Text style={styles.precio}>{price}</Text>
             <TouchableHighlight
@@ -94,14 +88,15 @@ const styles = StyleSheet.create({
     flex:1
   },
   title:{
-    fontSize:17,
-    marginLeft:140,
-    fontWeight:'bold'
+    fontSize:20,
+    textAlign:'center',
+    marginTop:5,
+    fontFamily:'poppins-bold'
   },
   paragraph:{
     textAlign:'center',
-    marginTop:5,
-    padding:5
+    padding:10,
+    fontFamily:'poppins-italic'
   },
   containerCart:{
     flexDirection:'row',
@@ -110,10 +105,15 @@ const styles = StyleSheet.create({
   ubicacion:{
     flexDirection:'row',
     marginRight:50,
-    marginLeft:85
+    marginLeft:85,
+  },
+  textUbicacion:{
+    fontFamily:'poppins-light'
   },
   precio:{
     fontSize:20,
+    marginBottom:10,
+    fontFamily:'poppins-light'
   }
 
 })

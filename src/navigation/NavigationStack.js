@@ -8,6 +8,7 @@ import ConfirmarCuenta from "../screens/Confirmacuenta.js";
 import MiPerfil from "../screens/MiPerfil.js";
 import Productos from "../screens/Productos.js"
 import SettingsScreen from "../screens/SettingsScreen.js"
+import Publicaciones from "../screens/Publicaciones"
 
 import { BottomTab } from "../navigation/BottomTab.js";
 const Stack = createStackNavigator();
@@ -21,6 +22,7 @@ export default function NavigationStack() {
       <Stack.Screen name="Productos" component={Productos} />
       <Stack.Screen name="Settings" component={SettingsScreen} />
       <Stack.Screen name="ConfirmarCuenta" component={ConfirmarCuenta} />
+      <Stack.Screen name="Publicaciones" component={Publicaciones} />
       <Stack.Screen options={{headerShown: false}} name="Inicio" component={BottomTab} />
     </Stack.Navigator>
   );

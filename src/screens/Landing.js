@@ -44,7 +44,8 @@ const styles = StyleSheet.create({
   containerLogo: {
     alignItems: "center",
     justifyContent: "center",
-    padding: 24,
+    padding: 20,
+    marginBottom:15
   },
   container: {
     flex: 1,
@@ -55,19 +56,20 @@ const styles = StyleSheet.create({
     paddingTop: 70,
   },
   paragraph: {
-    margin: 30,
-    fontSize: 24,
+    fontSize: 32,
     textAlign: "center",
     color: "#8EB1AC",
-    paddingTop: 50,
+    padding:20,
+    marginTop:25,
+    fontFamily:'poppins-bold',
   },
   button:{
     marginTop: 20,
     paddingTop: 50,
     padding: 50
-},
-buttonGreen:{
-  margin: 15
-}
+  },
+  buttonGreen:{
+    margin: 15
+  }
 
 });

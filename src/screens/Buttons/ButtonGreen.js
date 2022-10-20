@@ -31,7 +31,8 @@ const styles = StyleSheet.create({
   buttontext: {
     color: "#F7FDFD",
     marginHorizontal: 20,
-    fontSize: 17,
-    textAlign: 'center'
+    fontSize: 15,
+    textAlign: 'center',
+    fontFamily:'poppins-light'
   }
 })

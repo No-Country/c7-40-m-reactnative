@@ -2,6 +2,7 @@ import { View, Text, Image, StyleSheet} from 'react-native'
 import React from 'react'
 import {Card, Paragraph} from 'react-native-paper';
 
+
 // const {width} = Dimensions.get ('window');
 
 export default function CardComercio({details, coment }){
@@ -10,13 +11,13 @@ export default function CardComercio({details, coment }){
   return (
     <View style={styles.container}>
       <Card style={styles.card}>
+        <View style={styles.containerTitle}>
+            <Text style={styles.title}>{details.name}</Text>
+        </View>
       <Image source={{
           uri: `${details.logoCommerce}`,
         }}style={styles.imageFood}/>
-          <View style={styles.containerTitle}>
-            <Text style={styles.title}>{details.name}</Text>
-          </View>
-          <Text>{coment.name}</Text>
+          <Text style={styles.name}>{coment.name}</Text>
           <Paragraph style={styles.paragraph}>"{coment.details}"</Paragraph>
         <Image source={require('../assets/corazones.png')} style={styles.corazones}/>        
       </Card>
@@ -46,17 +47,24 @@ const styles = StyleSheet.create({
     flex:1
   },
   title:{
-    fontSize:17,
-    marginLeft:120,
-    fontWeight:'bold',
+    fontSize:20,
+    textAlign:'center',
+    marginTop:10,
+    fontFamily:'poppins-bold'
+  },
+  name:{
+    textAlign:'center',
+    fontSize:15,
+    fontFamily:'poppins-bold'
   },
   paragraph:{
     textAlign:'center',
-    marginTop:5,
-    padding:5
+    padding:10,
+    fontFamily:'poppins-italic'
   },
   corazones:{
-   marginLeft:160
+   marginLeft:160,
+   marginBottom:5
   }
 
 })
