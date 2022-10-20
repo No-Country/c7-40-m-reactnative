@@ -1,7 +1,9 @@
 {
-  "expoServerNgrokUrl": "https://wy-d9b.anonymous.c7-40-m-reactnative.exp.direct",
-  "packagerNgrokUrl": "https://wy-d9b.anonymous.c7-40-m-reactnative.exp.direct",
-  "ngrokPid": 10292,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
   "expoServerPort": null,
-  "packagerPort": 19000
+  "packagerPort": null,
+  "packagerPid": null,
+  "webpackServerPort": null
 }

@@ -66,11 +66,7 @@ const styles = StyleSheet.create({
   container:{
     flexDirection:'row',
     marginLeft:20,
-<<<<<<< HEAD
     marginTop: Constants.statusBarHeight,
-=======
-    marginBottom:10
->>>>>>> estilos
   },
   productos:{
     fontSize:30,

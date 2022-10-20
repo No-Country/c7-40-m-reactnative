@@ -73,7 +73,8 @@ const styles=StyleSheet.create({
   title:{
     fontSize:30,
     marginBottom:40,
-    fontFamily:'poppins-light'
+    fontFamily:'poppins-light',
+    textAlign:'center'
   },
   containerData:{
     flexDirection:'row',
