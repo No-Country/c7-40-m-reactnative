@@ -4,6 +4,7 @@ import ButtonOrange from './Buttons/ButtonOrange';
 import axios from 'axios';
 import useAuth from '../hooks/useAuth';
 import CardProductos from '../Components/CardProductos';
+import Constants from 'expo-constants';
 
 export default function Inicio (props) {
   const { getProducts, productos} = useAuth()
@@ -62,7 +63,8 @@ const styles = StyleSheet.create({
   },
   container:{
     flexDirection:'row',
-    marginLeft:20
+    marginLeft:20,
+    marginTop: Constants.statusBarHeight,
   },
   productos:{
     fontSize:30,
