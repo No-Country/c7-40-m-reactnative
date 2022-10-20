@@ -33,6 +33,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     fontSize: 17,
     textAlign: 'center',
-    fontWeight: 'bold'
+    fontFamily:'poppins-bold'
   }
 })

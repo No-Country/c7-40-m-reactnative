@@ -46,7 +46,7 @@ export default function Login(props) {
   return (
     <View style={styles.container}>
         <View style={styles.containerForm}>
-            <Text>Email</Text>
+            <Text style={styles.textInput}>Email</Text>
             <TextInput 
             style={ errors.email ? styles.inputError : styles.input }
             placeholder='Ingresa tu email' 
@@ -55,7 +55,7 @@ export default function Login(props) {
             value={values.email} 
             onChangeText={(text) => setFieldValue('email', text)} />
             <Text style={styles.textError} >{errors.email}</Text>
-            <Text>Contraseña</Text>
+            <Text style={styles.textInput}>Contraseña</Text>
             <TextInput 
             style={ errors.password ? styles.inputError : styles.input }
             placeholder='Ingresa tu contraseña' 
@@ -67,8 +67,8 @@ export default function Login(props) {
             <View style={styles.button}>
                 <ButtonGreen title="Login" onPress={handleSubmit} text="Iniciar Sesión" />
             </View>
-            <View style={styles.text}>
-                <Text>Me olvide la Contraseña.</Text>
+            <View>
+                <Text style={styles.text}>Me olvide la contraseña.</Text>
             </View>
         </View>
     </View>
@@ -87,6 +87,9 @@ const styles = StyleSheet.create({
         alignContent: "center",
         alignItems: "center"
     },
+    textInput:{
+        fontFamily:'poppins-light'
+    },
     input: {
         height: 44,
         width: 286,
@@ -97,6 +100,7 @@ const styles = StyleSheet.create({
         //paddingLeft: 10,
         paddingRight: 10,
         marginVertical: 10,
+        fontFamily:'poppins-light'
     },
     containerForm: {
         alignSelf: "center",
@@ -114,11 +118,7 @@ const styles = StyleSheet.create({
     },
     text: {
         textAlign: "center",
-        alignSelf: "center",
-        color: "#F7FDFD"
-    },
-    buttonVolver: {
-    alignItems: "flex-end"
+        fontFamily:'poppins-light'
     },
     inputError: {
         height: 44,
@@ -131,9 +131,10 @@ const styles = StyleSheet.create({
         paddingRight: 10,
         marginVertical: 10,
         borderColor: '#CC5252',
-        borderWidth:1
+        borderWidth:1,
     },
     textError: {
-        color: "#CC5252"
+        color: "#CC5252",
+        fontFamily:'poppins-light'
     }
 })

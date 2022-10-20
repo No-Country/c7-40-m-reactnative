@@ -9,6 +9,8 @@ import NavigationStack from './src/navigation/NavigationStack';
 // import logger from 'redux-logger'
 // import Reducers from './src/Redux/Reducers'
 import { AuthProvider } from './src/Context/AuthContext'
+import  {useFonts} from 'expo-font';
+import AppLoading from 'expo-app-loading';
 
 
   // const store = configureStore({
@@ -18,16 +20,41 @@ import { AuthProvider } from './src/Context/AuthContext'
 
 
 export default function App() {
+
+  let [fontsLoaded] = useFonts({
+    'poppins-light': require('./src/assets/Poppins-Light.ttf'),
+    'poppins-bold': require('./src/assets/Poppins-Bold.ttf'),
+    'poppins-italic': require('./src/assets/Poppins-Italic.ttf'),
+
+  })
+
+  if(fontsLoaded){
+    return (
+      // <Provider store ={store}>
+      <NavigationContainer>
+          <AuthProvider>
+            <NavigationStack/>
+          </AuthProvider>
+      </NavigationContainer>
+      //</Provider>
+      );  
+
+  } else{
+    <AppLoading/>
+  }
+
+
+  
    
-  return (
-    // <Provider store ={store}>
-    <NavigationContainer>
-        <AuthProvider>
-          <NavigationStack/>
-        </AuthProvider>
-    </NavigationContainer>
-    //</Provider>
-    );  
+  // return (
+  //   // <Provider store ={store}>
+  //   <NavigationContainer>
+  //       <AuthProvider>
+  //         <NavigationStack/>
+  //       </AuthProvider>
+  //   </NavigationContainer>
+  //   //</Provider>
+  //   );  
 }
 
 

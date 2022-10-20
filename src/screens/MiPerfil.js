@@ -7,6 +7,10 @@ import Constants from 'expo-constants';
 export default function MiPerfil(props) {
   const { navigation } = props;
 
+  const goToPublicaciones= () => {
+    navigation.navigate("Publicaciones")
+  }
+  
 const {auth, logoutUser} = useAuth()
     // console.log(auth.data.user.firstName)
   const logout = () => {
@@ -45,7 +49,11 @@ const {auth, logoutUser} = useAuth()
         </View>  
 
       <View>
-        <ButtonGreen onPress={logout} text="Cerrar Sesion" />
+        <ButtonGreen onPress={logout} text="Cerrar sesion" />
+      </View>
+
+      <View style={styles.containerButton}>
+        <ButtonGreen onPress={goToPublicaciones} text="Crear publicación" />
       </View>
         
     </View>
@@ -61,14 +69,18 @@ const styles=StyleSheet.create({
   },
   title:{
     fontSize:30,
-    marginBottom:40
+    marginBottom:40,
+    fontFamily:'poppins-light'
   },
   containerData:{
     flexDirection:'row',
-    marginBottom:25,
+    marginBottom:30,
     alignItems:'center',
     justifyContent:'space-evenly',
-    width:'100%'
+    width:'100%',
+  },
+  subtitle:{
+    fontFamily:'poppins-light',
   },
   data:{
     height: 44,
@@ -76,7 +88,11 @@ const styles=StyleSheet.create({
     borderRadius: 3,
     padding: 8,
     backgroundColor: "#DAF4F0",
-    marginVertical: 10,
+    marginVertical: 5,
+    fontFamily:'poppins-light'
+  },
+  containerButton:{
+    marginTop:25
   }
 
 })

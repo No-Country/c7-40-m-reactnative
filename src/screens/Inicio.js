@@ -8,7 +8,9 @@ import useAuth from '../hooks/useAuth';
 import { comercioDetails } from '../utils/userDB'; 
 
 
+
 export default function Inicio (props) {
+
   const {auth} = useAuth()
 
   const {navigation} = props;
@@ -16,25 +18,18 @@ export default function Inicio (props) {
   const goToProductos= () => {
     navigation.navigate("Productos")
   }
-
-
   
     return (
       <ScrollView style={styles.bg}>
         <View style={styles.containerMenu}>
-          <Image source={require('../assets/logo-small.png')} style={styles.logo}/>
-          <Serch/>
-          <Image source={require('../../assets/busqueda.png')} style={styles.busqueda}/>
+          <Image source={require('../assets/logo-savefood.png')} style={styles.logo}/>
+          {/* <Serch/>
+          <Image source={require('../../assets/busqueda.png')} style={styles.busqueda}/> */}
         </View>
         {auth ? 
         <View>
           <View style={styles.container}>
             <ButtonOrange onPress={goToProductos} text='Explorar' />
-            {/* <TouchableOpacity
-              style={styles.button}
-              onPress={goToProductos}>
-              <Text style={styles.text}>Explorar</Text>
-            </TouchableOpacity> */}
           </View>
           <Text style={styles.title}>Bienvenido {auth.data.user.firstName}!</Text>
   
@@ -52,7 +47,6 @@ export default function Inicio (props) {
         </View> :
         <Text> Tiene que iniciar sesion para disfrutar de la aplicacion</Text>        
         }
-        <Text style={styles}>Menu botones abajo</Text>
       </ScrollView>
     )
 }
@@ -62,12 +56,10 @@ const styles = StyleSheet.create({
     backgroundColor:'#F7FDFD',
     height:'100%'
   },
-  logo:{
-    marginLeft:20
-  },
   containerMenu:{
     flexDirection:'row',
-    marginTop: Constants.statusBarHeight
+    marginTop: Constants.statusBarHeight,
+    justifyContent:'center',
   },
   busqueda:{
     marginTop:5
@@ -85,7 +77,8 @@ const styles = StyleSheet.create({
   title:{
     textAlign:'center',
     fontSize:20,
-    marginTop:15
+    marginTop:15,
+    fontFamily:'poppins-light'
   },
   containerTop:{
     flexDirection:'row',
@@ -94,9 +87,10 @@ const styles = StyleSheet.create({
     marginBottom:25,
   },
   textTop:{
-    fontWeight:'bold',
     color:'#17443F',
-    fontSize:18
+    fontSize:22,
+    marginBottom:10,
+    fontFamily:'poppins-bold'
   }
  
 

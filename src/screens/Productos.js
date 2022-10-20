@@ -1,5 +1,5 @@
 import { Text, View, StyleSheet, Image, TouchableOpacity, ScrollView} from 'react-native'
-import React, { useEffect } from 'react'
+import React, { useEffect} from 'react'
 import ButtonOrange from './Buttons/ButtonOrange';
 import axios from 'axios';
 import useAuth from '../hooks/useAuth';
@@ -62,16 +62,17 @@ const styles = StyleSheet.create({
   },
   container:{
     flexDirection:'row',
-    marginLeft:20
+    marginLeft:20,
+    marginBottom:10
   },
   productos:{
     fontSize:30,
     marginRight:10,
-    color:'#184D47'
+    fontFamily:'poppins-light'
   },
   containerButton:{
     marginLeft:'20%',
-    marginBottom:30
+    marginBottom:40
   }
 
 })
