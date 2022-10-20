@@ -34,6 +34,9 @@ export function AuthProvider(props) { //
     }
     const logoutUser = () => {
         setAuth(undefined)
+        setProductos([])
+        setCarrito([])
+        
     }
 
     const valueContext = {

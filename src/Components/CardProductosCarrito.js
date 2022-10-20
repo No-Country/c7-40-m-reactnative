@@ -16,14 +16,14 @@ export default function CardProductosCarrito({id, name, commerce, price, descrip
         "Authorization": `Bearer ${token}`
       },
     } ).then(res=> {
-      axios.get('https://tester-server-production.up.railway.app/api/v1/cart/' , {
-      headers: {
-        'Authorization': `Bearer ${token}`
-      },
-    }).then(res => {
-      getCarrito([res.data.data.cart])
-    }).catch(error=>{
-      console.log(error)
+          axios.get('https://tester-server-production.up.railway.app/api/v1/cart/' , {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          },
+        }).then(res => {
+          getCarrito([res.data.data.cart])
+        }).catch(error=>{
+          console.log(error)
     })
     }).catch(error=>{
       console.log(error)
