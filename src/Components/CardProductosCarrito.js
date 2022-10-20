@@ -1,13 +1,13 @@
 import { View, Text ,StyleSheet, Image, Button,TouchableHighlight } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import useAuth from '../hooks/useAuth'
 
 export default function CardProductosCarrito({id, name, commerce, price, description, quantity, token, navigation}) {
-  console.log(token)
-  const [count , setCount] = useState(quantity)
-  
-  const dispatchPath = () =>{
 
+  const [count , setCount] = useState(quantity)
+  const { getCarrito} = useAuth()
+  const dispatchPath = () =>{
     axios.patch('https://tester-server-production.up.railway.app/api/v1/cart/update-cart', {
       productId: id,
       quantity: count
@@ -16,7 +16,15 @@ export default function CardProductosCarrito({id, name, commerce, price, descrip
         "Authorization": `Bearer ${token}`
       },
     } ).then(res=> {
-      console.log('ok')
+      axios.get('https://tester-server-production.up.railway.app/api/v1/cart/' , {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      },
+    }).then(res => {
+      getCarrito([res.data.data.cart])
+    }).catch(error=>{
+      console.log(error)
+    })
     }).catch(error=>{
       console.log(error)
     })
@@ -40,7 +48,15 @@ export default function CardProductosCarrito({id, name, commerce, price, descrip
     }})
     .then((res) => {
       alert(`Su producto ${name} fue eliminado`)
-      navigation.push("Productos")
+      axios.get('https://tester-server-production.up.railway.app/api/v1/cart/' , {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      },
+      }).then(res => {
+        getCarrito([res.data.data.cart])
+      }).catch(error=>{
+        console.log(error)
+      })
     })
     .catch((error)=>{
       console.log(error)
@@ -48,25 +64,30 @@ export default function CardProductosCarrito({id, name, commerce, price, descrip
   }
 
   return (
-    <>
+
       <View >
-        <Text>{commerce}</Text>
+        { id? 
+        <View>
+          <Text>{commerce}</Text>
          <Text>{name}</Text>
        <View style={Style.ConteinerDatos}>
          <Text>$ {price}</Text>
        </View>
        <View style={Style.conteinerContador}>
          <Text>{count}</Text>
-         <TouchableHighlight onPress={AddProducts}>
+        <TouchableHighlight onPress={AddProducts}>
           <Text>+</Text>
         </TouchableHighlight>         
         <Button onPress={SubtractProducts} title="-" />
          <Button onPress={DeleteProduct} title="Eliminar"/>
        </View>
         </View>
-    {/* <Text>No tiene productos en su carrito 🥹</Text> */}
-  
-    </>
+        :
+        <Text></Text>
+      }
+        
+        </View>
+    
   )
 }
 

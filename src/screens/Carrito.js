@@ -6,12 +6,15 @@ import CardProductosCarrito from "../Components/CardProductosCarrito";
 import useAuth from "../hooks/useAuth";
 
 const Carrito = (props) => {
-  const {auth} = useAuth()
+  const {auth ,carrito, getCarrito} = useAuth()
   const {navigation} = props;
-  console.log(navigation)
-  // console.log(auth.data.token);
-  const [data , setData] = useState([])
-  // const dataQuantity = data[0].productsInCarts?.map(a => a.quantity)
+
+
+  const sumAccount = carrito[0]?.productsInCarts?.map(a => a.quantity*a.product.price)
+  const total = sumAccount?.reduce((a, b) => a + b, 0);
+
+  console.log("total", total)
+
   const token = auth ? auth.data.token : undefined;
   useEffect(()=>{
     axios.get('https://tester-server-production.up.railway.app/api/v1/cart/' , {
@@ -19,21 +22,23 @@ const Carrito = (props) => {
         'Authorization': `Bearer ${token}`
       },
     }).then(res => {
-      setData([res.data.data.cart])
-      
+      getCarrito([res.data.data.cart])
     }).catch(error=>{
       console.log(error)
     })
-  },[])
-  // console.log(data[0].productsInCarts)
+    return function () {
+      console.log('se desmonto el componente')
+    }
+  },[total])
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.title}>
-      <Text style={styles.text}>Carrito</Text>
-      <Image style={styles.image} source={require('../assets/carrito.png')} />
+        <Text style={styles.text}>Carrito</Text>
+        <Image style={styles.image} source={require('../assets/carrito.png')} />
       </View>
       <View style={styles.conteinerCard}>
-        {data? data[0]?.productsInCarts.map((obj)=> (
+        { carrito? carrito[0]?.productsInCarts.map((obj)=> (
             <View key={obj.id}>
             <CardProductosCarrito 
             id={obj.productId} 
@@ -49,7 +54,10 @@ const Carrito = (props) => {
         )) :
         <Text>No tiene productos en su carrito 🥹</Text>
       }
-      
+      </View>
+      <View>
+        <Text>TOTAL : $ {total ? total : 0}
+        </Text>
       </View>
     </SafeAreaView>
   );
