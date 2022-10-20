@@ -184,12 +184,15 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "#184D47",
     paddingTop: 20,
+    fontFamily:'poppins-light'
   },
   item: {
     textAlign: "center",
     color: "#8EB1AC",
     marginBottom: 30,
     marginTop: 30,
+    fontFamily:'poppins-light',
+    padding:10
   },
   botones: {
     flexDirection: "row",

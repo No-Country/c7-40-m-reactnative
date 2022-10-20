@@ -65,21 +65,25 @@ export default function CardProductosCarrito({id, name, commerce, price, descrip
 
   return (
 
-      <View >
+      <View style={Style.container}>
         { id? 
         <View>
-          <Text>{commerce}</Text>
-         <Text>{name}</Text>
+          <Text style={Style.dataProductos}>{commerce}</Text>
+         <Text style={Style.dataProductos}>{name}</Text>
        <View style={Style.ConteinerDatos}>
-         <Text>$ {price}</Text>
+         <Text style={Style.dataProductos}>$ {price}</Text>
        </View>
        <View style={Style.conteinerContador}>
          <Text>{count}</Text>
-        <TouchableHighlight onPress={AddProducts}>
-          <Text>+</Text>
+        <TouchableHighlight onPress={AddProducts} style={Style.button}>
+          <Text style={Style.sumaResta}>+</Text>
         </TouchableHighlight>         
-        <Button onPress={SubtractProducts} title="-" />
-         <Button onPress={DeleteProduct} title="Eliminar"/>
+        <TouchableHighlight onPress={SubtractProducts}  >
+          <Text style={Style.sumaResta}>-</Text>
+        </TouchableHighlight>
+        <TouchableHighlight onPress={DeleteProduct} >
+          <Text>Eliminar</Text>
+        </TouchableHighlight>
        </View>
         </View>
         :
@@ -92,40 +96,32 @@ export default function CardProductosCarrito({id, name, commerce, price, descrip
 }
 
 const Style = StyleSheet.create({
-    containerCard: {
-        backgroundColor: '#DAF4F0',
-        width: '90%',
-        height: 150,
-        alignItems: 'center',
-        margin: 10,
-        flexDirection:'row',
+    container:{
+      marginTop:20
     },
     text:{
         fontSize: 40
     },
     conteinerContador: {
       borderRadius: 20,
-      backgroundColor: '#D9D9D9',
-      width: 100,
+      backgroundColor: '#DAF4F0',
+      width: 170,
       height: 50,
       flexDirection: 'row',
       alignItems: 'center',
-    },
-    conteinerImage: {
-      width: "40%",
-      height: 100,
-      overflow: 'hidden',
-      justifyContent: 'center',
-      resizeMode: 'stretch'
-    },
-    img:{
-      width: "100%",
-      height: 150,
+      marginLeft:20,
+      marginTop:5,
+      justifyContent:'space-evenly'
     },
     ConteinerDatos:{
       flexDirection: 'column'
     },
-    buttonContador:{
-      fontSize: 20
+    sumaResta:{
+      fontSize:20
+    },
+    dataProductos:{
+      fontFamily:'poppins-light',
+      fontSize:17,
+      marginLeft:25
     }
 })
