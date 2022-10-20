@@ -29,7 +29,7 @@ const Carrito = (props) => {
     return function () {
       console.log('se desmonto el componente')
     }
-  },[total])
+  },[])
 
   return (
     <SafeAreaView style={styles.container}>
