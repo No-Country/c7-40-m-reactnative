@@ -15,7 +15,7 @@ const Stack = createStackNavigator();
 export default function NavigationStack() {
   return (
     <Stack.Navigator initialRouteName="Landing">
-      <Stack.Screen name="Landing" component={Landing} />
+      <Stack.Screen options={{headerShown: false}} name="Landing" component={Landing} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Registro" component={Registro} />
       <Stack.Screen name="Productos" component={Productos} />
